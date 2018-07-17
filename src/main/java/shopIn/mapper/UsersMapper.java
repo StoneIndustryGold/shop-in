@@ -7,4 +7,6 @@ import shopIn.pojo.Users;
 public interface UsersMapper {
 	
 	List<Users> fondAll();
+	
+	Users findOneByUsername(String username);
 }

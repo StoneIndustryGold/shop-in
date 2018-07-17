@@ -9,6 +9,7 @@ public class Users {
     private Sex sex ;
     private Integer age_id ;
     private String gmail;
+    private Boolean enabled;
 	public Integer getId() {
 		return id;
 	}
@@ -44,6 +45,12 @@ public class Users {
 	}
 	public void setGmail(String gmail) {
 		this.gmail = gmail;
+	}
+	public Boolean getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
     
     

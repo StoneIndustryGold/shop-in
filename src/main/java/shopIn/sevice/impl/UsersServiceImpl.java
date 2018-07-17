@@ -23,4 +23,10 @@ public class UsersServiceImpl implements UsersService {
 		return usersMapper.fondAll();
 	}
 
+
+	public Users findOneByUsername(String username) {
+		// TODO Auto-generated method stub
+		return usersMapper.findOneByUsername(username);
+	}
+
 }

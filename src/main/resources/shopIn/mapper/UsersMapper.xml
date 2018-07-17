@@ -6,4 +6,8 @@
   		<select id="fondAll"  resultType="Users">
   				select * from users 
   		</select>
+  		
+  		<select id="findOneByUsername" resultType="Users">
+  			select * from users  where username=#{username}
+  		</select>
   </mapper>
