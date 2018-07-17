@@ -52,4 +52,15 @@
 			<filter-name>characterEncodingFilter</filter-name>
 			<url-pattern>/*</url-pattern>
 		</filter-mapping>
+		
+			 <!-- 该过滤器负责拦截所有请求，需要处理认证授权的时候就委托给同名的spring组件 -->
+	  <filter>
+	    <!-- springsecurity默认使用的名字，不可瞎改 -->
+	   <filter-name>springSecurityFilterChain</filter-name>
+	    	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	  </filter>
+	  <filter-mapping>
+		    <filter-name>springSecurityFilterChain</filter-name>
+		    <url-pattern>/*</url-pattern>
+	  </filter-mapping>  
 </web-app>
