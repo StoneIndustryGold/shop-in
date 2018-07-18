@@ -7,12 +7,8 @@
 		<div class="header">
 			<ul>
 				<li><a href="${contextPath }/users/list">作者列表</a></li>
-				<li><a href="http://localhost:8080/shop/Cellpones/list">手机</a></li>
-				
+				<li><a href="http://localhost:8080/shop/Cellpones/list">手机</a></li>				
 			</ul>
-			
-			 
-	
 		</div>
 		<div style="display: inline-block;">
 <!--                                principal属性可以拿到当前登录的用户详情（UserDetailsImpl） -->
