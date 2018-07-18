@@ -14,6 +14,10 @@
 	<c:if test="${loginError }"><!-- 在控制类已经判断好的直接那就好了 -->
 		<h5 style=" color:red;">用户名或密码错误</h5>
 	</c:if>
+		  <!-- 当退出后来到登录页面时，显示该消息 -->
+	<c:if test="${param.logout != null}">
+	    <h2>已退出，请重新登录</h2>
+	</c:if>
 	<form action="" method="post"><!-- post提交事为啥还不了解.有可能是第三方类需要 -->
 	<sec:csrfInput />
 		<div>

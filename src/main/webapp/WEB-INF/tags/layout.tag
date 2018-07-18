@@ -11,12 +11,19 @@
 				
 			</ul>
 			
+			 
+	
 		</div>
 		<div style="display: inline-block;">
 <!--                                principal属性可以拿到当前登录的用户详情（UserDetailsImpl） -->
       		当前用户：	<sec:authentication property="principal.username" /><br>
       			性别：<sec:authentication property="principal.users.sex" /><br>
       			年龄：<sec:authentication property="principal.users.age_id" /><br>
+      				<!-- springsecurity默认的退出路径是：POST /logout，注意：springsecurity自带处理 -->
+		      <form action="${contextPath}/logout" method="post" style="display: inline;">
+		        <sec:csrfInput />
+		        <button type="submit">退出</button>
+		      </form>
     	</div> 
 		<div class="content">
 			<jsp:doBody />
