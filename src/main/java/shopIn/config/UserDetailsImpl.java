@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.User;
 import shopIn.pojo.Users;
 
 public class UserDetailsImpl extends User{
-	private Users users;
+	private Users users;//点尸体里别的属性
 	public UserDetailsImpl(Users users) {
 		super(users.getUsername(),
 			  users.getPassword(),
@@ -25,6 +25,13 @@ public class UserDetailsImpl extends User{
 		authorities.add(new SimpleGrantedAuthority("adni_"+users));
 	
 		return authorities;
+	}
+	
+	public Users getUsers() {
+		return users;
+	}
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 	
 	

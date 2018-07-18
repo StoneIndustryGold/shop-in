@@ -14,7 +14,9 @@
 		</div>
 		<div style="display: inline-block;">
 <!--                                principal属性可以拿到当前登录的用户详情（UserDetailsImpl） -->
-      		当前用户：	<sec:authentication property="principal.username" />
+      		当前用户：	<sec:authentication property="principal.username" /><br>
+      			性别：<sec:authentication property="principal.users.sex" /><br>
+      			年龄：<sec:authentication property="principal.users.age_id" /><br>
     	</div> 
 		<div class="content">
 			<jsp:doBody />
