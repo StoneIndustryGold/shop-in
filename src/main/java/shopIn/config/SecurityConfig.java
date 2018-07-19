@@ -17,8 +17,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	public void configure(HttpSecurity http)throws Exception {
 		http
 		    .authorizeRequests()//配置授权
-		    .antMatchers("/login").permitAll()// 登录页面允许所有用户访问（包括匿名）
-		    .antMatchers("/register").permitAll()//注册用户
+		    
+		    .antMatchers("/login","/register","/").permitAll()// 登录页面允许所有用户访问（包括匿名）
+		    //.antMatchers("/register").permitAll()//注册用户
 		    .antMatchers("/**").authenticated()// 其他页面仅限于登录用户访问
 		 .and()
 	         .sessionManagement() // 配置会话管理

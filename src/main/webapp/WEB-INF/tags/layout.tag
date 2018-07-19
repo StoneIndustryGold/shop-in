@@ -9,24 +9,33 @@
 				<li><a href="${contextPath }/users/list">作者列表</a></li>
 				<li><a href="http://localhost:8080/shop/Cellpones/list">手机商城</a></li>				
 			</ul>
-		</div>
-		<div style="display: inline-block;">
-<!--                                principal属性可以拿到当前登录的用户详情（UserDetailsImpl） -->
-      		当前用户：	<sec:authentication property="principal.username" /><br>
-      			性别：<sec:authentication property="principal.users.sex" /><br>
-      			年龄：<sec:authentication property="principal.users.age_id" /><br>
-      				<!-- springsecurity默认的退出路径是：POST /logout，注意：springsecurity自带处理 -->
+		
+		
+			<sec:authorize access="isAuthenticated()"> 
+                 当前用户：<sec:authentication property="principal.username" /><br>
+      	    性别：<sec:authentication property="principal.users.sex" /><br>
+      	    年龄：<sec:authentication property="principal.users.age_id" /><br>
+      				
 		      <form action="${contextPath}/logout" method="post" style="display: inline;">
 		        <sec:csrfInput />
 		        <button type="submit">退出</button>
 		      </form>
+		     </sec:authorize>
+		     <sec:authorize access="isAnonymous()">
+		     	<a href="${contextPath }/login">登录</a>&nbsp;&nbsp;&nbsp;
+		     	<a href="${contextPath }/register">注册</a>
+		     </sec:authorize>
     	</div> 
+		     
+		     
+		    
 		<div class="content">
 			<jsp:doBody />
 		</div>
 		<div class="footer">
 			版权归石大仙联合出版社所有
 		</div>
+	
 	</body>
 
 </html>
