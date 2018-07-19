@@ -16,7 +16,7 @@
 	</style>
 </head>
 <body>
-		<form:form action="" method="post" commandName="users"><!-- post提交事为啥还不了解.有可能是第三方类需要 -->
+		<form:form action="" method="post" commandName="users">
 			<sec:csrfInput />
 		<div>
 			<label for="username">用户</label><!--默认是username  -->

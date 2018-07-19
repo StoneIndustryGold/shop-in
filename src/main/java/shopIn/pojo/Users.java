@@ -2,15 +2,16 @@ package shopIn.pojo;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import shopIn.Sex;
 
 public class Users {
     private Integer id ;
-    @Size(min=2,max=64,message="2~64字")
+    @Pattern(regexp = "[0-9a-zA-Z-_]{2,64}", message ="2~64位，仅限数字字母、连字符-、下划线_")
     private String username;
-    @Size(min=2,max=64,message="2~64字")
+    @Pattern(regexp = "[\\p{Digit}\\p{Alpha}\\p{Punct}]{6,64}", message ="6~64位，仅限数字字母、英文标")
     private String password;
     @NotNull
     private Sex sex ;
