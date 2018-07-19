@@ -34,7 +34,9 @@ public class UsersServiceImpl implements UsersService {
 
 
 	public void addUser(Users users) {
+		System.out.println("密码"+users.getPassword());
 	String passwordEncode=passwordEncoder.encode(users.getPassword());
+	System.out.println("密码"+passwordEncode);
 	users.setPassword(passwordEncode);	
 	usersMapper.addUser(users);
 		

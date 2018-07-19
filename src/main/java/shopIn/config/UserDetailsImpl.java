@@ -15,7 +15,7 @@ public class UserDetailsImpl extends User{
 	public UserDetailsImpl(Users users) {
 		super(users.getUsername(),
 			  users.getPassword(),
-			  users.getEnabled() == null ? true : !users.getEnabled(),
+			  users.getEnabled() == null ? true : users.getEnabled(),
 					 true, true ,true,
 					 buildAuthorities(users));
 			this.users=users;

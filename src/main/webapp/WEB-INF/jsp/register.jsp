@@ -20,7 +20,7 @@
 			<sec:csrfInput />
 		<div>
 			<label for="username">用户</label><!--默认是username  -->
-			<form:input type="text" path="username" id="username" />
+			<form:input type="text" path="username" id="username"/>
 			<form:errors path="username" cssClass="field-error"></form:errors>
 		</div>
 		<div>
