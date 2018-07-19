@@ -9,6 +9,8 @@ public interface UsersService {
 	List<Users> fondAll();
 
 	Users findOneByUsername(String username);
+
+	void addUser(Users users);
 	
 	
 }

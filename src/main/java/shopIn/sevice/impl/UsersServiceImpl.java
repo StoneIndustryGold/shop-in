@@ -29,4 +29,10 @@ public class UsersServiceImpl implements UsersService {
 		return usersMapper.findOneByUsername(username);
 	}
 
+
+	public void addUser(Users users) {
+		usersMapper.addUser(users);
+		
+	}
+
 }

@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 		    .authorizeRequests()//配置授权
 		    .antMatchers("/login").permitAll()// 登录页面允许所有用户访问（包括匿名）
-		    //.antMatchers("/register").permitAll() 注册页面
+		    .antMatchers("/register").permitAll()//注册用户
 		    .antMatchers("/**").authenticated()// 其他页面仅限于登录用户访问
 		 .and()
 	         .sessionManagement() // 配置会话管理
