@@ -42,13 +42,15 @@ public class LoginController {
 	@RequestMapping(method=RequestMethod.POST,value="/register")
 	public String adduser(@ModelAttribute 
 					 @Valid Users users,
-					BindingResult  bindingResult) {		
+					BindingResult  bindingResult) {	
+		
+		if(usersService.create(users.getUsername())) {
+			bindingResult.rejectValue("username", "create","用户名已占用");
+		}
+		
 		if(bindingResult.hasErrors()) {			
 			return "register";			
 		}
-		System.out.println("用户是："+users.getUsername()+""+users.getPassword()+""+users.getImages()+""+
-				users.getSex());
-		
 		usersService.addUser(users);
 		return "redirect:/login";//回到首次进入页面
 	}

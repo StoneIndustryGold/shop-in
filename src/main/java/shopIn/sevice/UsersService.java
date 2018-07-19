@@ -12,5 +12,6 @@ public interface UsersService {
 
 	void addUser(Users users);
 	
+	boolean create(String username);
 	
 }

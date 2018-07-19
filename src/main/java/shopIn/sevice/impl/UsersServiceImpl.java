@@ -35,4 +35,10 @@ public class UsersServiceImpl implements UsersService {
 		
 	}
 
+
+	public boolean create(String username) {
+		
+		return usersMapper.create(username);
+	}
+
 }

@@ -10,9 +10,14 @@
   		<select id="findOneByUsername" resultType="Users">
   			select * from users  where username=#{username}
   		</select>
+  		<select id="create" resultType="boolean">
+  			select count(*) from users where username=#{username}
+  		</select>
   		
   		<insert id="addUser">
   			insert into users(id, username, password, sex, age_id, gmail, enabled,images)
   			values(users_seq.nextval, #{username},#{password},#{sex},#{age_id},#{gmail}, 1,#{images})
   		</insert>
+  		
+  		
   </mapper>

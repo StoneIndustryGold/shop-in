@@ -11,4 +11,6 @@ public interface UsersMapper {
 	Users findOneByUsername(String username);
 	
 	void addUser(Users users);
+	
+	boolean create(String username);
 }
