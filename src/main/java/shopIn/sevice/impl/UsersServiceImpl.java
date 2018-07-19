@@ -3,6 +3,7 @@ package shopIn.sevice.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import shopIn.mapper.UsersMapper;
@@ -11,11 +12,13 @@ import shopIn.sevice.UsersService;
 @Service
 public class UsersServiceImpl implements UsersService {
 	private UsersMapper usersMapper;
-	
+	private PasswordEncoder passwordEncoder;
 	@Autowired
-	public UsersServiceImpl(UsersMapper usersMapper) {
+	public UsersServiceImpl(UsersMapper usersMapper, PasswordEncoder passwordEncoder) {
 		this.usersMapper = usersMapper;
+		this.passwordEncoder = passwordEncoder;
 	}
+
 
 
 	public List<Users> fondAll() {
@@ -31,7 +34,9 @@ public class UsersServiceImpl implements UsersService {
 
 
 	public void addUser(Users users) {
-		usersMapper.addUser(users);
+	String passwordEncode=passwordEncoder.encode(users.getPassword());
+	users.setPassword(passwordEncode);	
+	usersMapper.addUser(users);
 		
 	}
 
