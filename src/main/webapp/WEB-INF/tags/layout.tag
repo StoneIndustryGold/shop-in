@@ -14,8 +14,12 @@
 			<sec:authorize access="isAuthenticated()"> 
                  当前用户：<sec:authentication property="principal.username" /><br>
       	    性别：<sec:authentication property="principal.users.sex" /><br>
-      	    年龄：<sec:authentication property="principal.users.age_id" /><br>
-      				
+      	    年龄：<sec:authentication property="principal.users.age_id" /><br><!-- 设置别名方便取值 -->
+      	    <sec:authentication property="principal.users.images" var="UsersImage" />
+      	   														<!-- 取得图片名字 -->
+      			<img  src="${contextPath }/assets/images/cellpone/${UsersImage}"
+      			width="100" height="100" align="middle"><br>
+      			
 		      <form action="${contextPath}/logout" method="post" style="display: inline;">
 		        <sec:csrfInput />
 		        <button type="submit">退出</button>
