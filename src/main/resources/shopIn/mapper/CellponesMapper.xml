@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="shopIn.mapper.CellponesMapper">
+  	<select id="findAll" resultType="Cellpones">
+  		select * from Cellpones
+  	</select>
+  	<select id="findOne" resultType="Cellpones">
+  		select * from Cellpones where id=#{id}
+  	</select>
+  	<select id="obscureFind" resultType="Cellpones">
+  		select * from Cellpones where
+  		  <if test="brand !=null" >
+  		  	<bind name="brand" value="'%'+brand+'%'"/>
+  		 	brand  like #{brand}
+  		  </if>
+  	</select>
+  </mapper>

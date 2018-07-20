@@ -18,9 +18,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 		    .authorizeRequests()//配置授权
 		    
-		    .antMatchers("/login","/register","/","/cellpones/{id}/details").permitAll()// 登录页面允许所有用户访问（包括匿名）
+		    .antMatchers("/login","/register","/","/cellpones/{id}/details","/obscurefind/list").permitAll()// 登录页面允许所有用户访问（包括匿名）
 		    //.antMatchers("/register").permitAll()//注册用户
-		   // .antMatchers("/**").authenticated()// 其他页面仅限于登录用户访问
+		    //.antMatchers("/**").authenticated()// 其他页面仅限于登录用户访问
 		 .and()
 	         .sessionManagement() // 配置会话管理
 	         .maximumSessions(1) // 指定每个账号最多同时活跃会话数，为1表示同一个用户名二次登录会使第一次登录失效
