@@ -23,7 +23,7 @@
 	  		  <if test="cpubrand !=null">
 	  		  	and cpubrand =#{cpubrand}
 	  		  </if>
-	  		  <if test="ram !=null">
+	  		   <if test="ram !=null">
 	  		  	and ram=#{ram}
 	  		  </if>
   		  </where>

@@ -7,10 +7,10 @@
 <t:layout>
 		<h2>欢迎来到首页 http://localhost:8080/shop-in/</h2>
 		
-		<form:form action="${contextPath }/obscurefind/list" method="get" commandName="cellpones">
+		<form:form action="${contextPath }/obscurefind/list" method="get">
 			  <div>
 					<label for="brand">牌子：</label> 
-					<input type="text" path=brand id="brand" value="华为8" />	
+					<input type="text" name=brand id="brand" value="华为8" >	
 			</div> 
 			<div>
 					<label for="os">系統:</label>
@@ -29,15 +29,15 @@
 					<option value="联发科">联发科</option>
 				</select>
 			</div>
-			 <div>
+		  <div>
 				<label for="ram">內存</label>
-				<select name="ram" id="ram">
+					<select name="ram" id="ram">
 					<option value="">多大內存</option>
 					<option value="4">4</option>
 					<option value="8">8</option>
 					<option value="16">16</option>
 				</select>
-			</div>	 -->	
+			</div>	 
 				<button type="submit">
 				搜索栏</button>
 			
