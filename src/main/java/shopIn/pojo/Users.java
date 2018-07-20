@@ -1,5 +1,7 @@
 package shopIn.pojo;
 
+import java.util.Date;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -18,12 +20,10 @@ public class Users {
     @Max(120)
     private Integer age_id ;
     @Size(min=2,max=64,message="2~64字")
-    private String gmail;
-    
-    private Boolean enabled;
-    
+    private String gmail;    
+    private Boolean enabled;   
     private String images;
-    
+    private Date lastLoginTime;
 	public Integer getId() {
 		return id;
 	}
@@ -71,6 +71,12 @@ public class Users {
 	}
 	public void setImages(String images) {
 		this.images = images;
+	}
+	public Date getLastLoginTime() {
+		return lastLoginTime;
+	}
+	public void setLastLoginTime(Date lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
 	}
     
     

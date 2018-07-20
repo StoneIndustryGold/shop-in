@@ -2,12 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 	<body>
 		<div class="header">
 			<ul>
 				<li><a href="${contextPath }/users/list">作者列表</a></li>
-				<li><a href="http://localhost:8080/shop/Cellpones/list">手机商城</a></li>				
+				<li><a href="http://localhost:8080/shop/Cellpones/list">手机商城</a></li>
+				<li><a href="${contextPath }/users/list">作者列表</a> </li>			
 			</ul>
 		
 		
@@ -15,6 +17,9 @@
                  当前用户：<sec:authentication property="principal.username" /><br>
       	    性别：<sec:authentication property="principal.users.sex" /><br>
       	    年龄：<sec:authentication property="principal.users.age_id" /><br><!-- 设置别名方便取值 -->
+	       登錄時間：<sec:authentication property="principal.users.lastLoginTime" var="lastLoginTime"/>
+	       <fmt:formatDate value="${lastLoginTime }"
+				      pattern="yyyy-MM-dd HH:mm:ss"/> <br>    	    
       	    <sec:authentication property="principal.users.images" var="UsersImage" />
       	   														<!-- 取得图片名字 -->
       			<img  src="${contextPath }/assets/images/cellpone/${UsersImage}"

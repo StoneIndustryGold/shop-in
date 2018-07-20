@@ -16,7 +16,8 @@
         age_id integer ,
         gmail varchar(128),
         enabled varchar2(1),
-        images varchar(2000)      
+        images varchar(2000),
+        LAST_LOGIN_TIME timestamp
  )
  
  

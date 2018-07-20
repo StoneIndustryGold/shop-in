@@ -18,6 +18,8 @@
   			insert into users(id, username, password, sex, age_id, gmail, enabled,images)
   			values(users_seq.nextval, #{username},#{password},#{sex},#{age_id},#{gmail}, 1,#{images})
   		</insert>
-  		
+  		<update id="updateLastLoginTime">
+  			update users set LAST_LOGIN_TIME=#{date} where id=#{id}
+  		</update>
   		
   </mapper>
