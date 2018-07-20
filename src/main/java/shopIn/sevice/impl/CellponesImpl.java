@@ -28,7 +28,6 @@ public class CellponesImpl implements CellponesService {
 	}
 
 	public List<Cellpones> obscureFind(Cellpones cellpones) {
-		
 		return cellponesMapper.obscureFind(cellpones);
 	}
 

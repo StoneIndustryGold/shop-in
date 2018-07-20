@@ -51,8 +51,8 @@ public class CellponesController {
 	public String obscureFind(@ModelAttribute Cellpones cellpones,Model model) {
 		
 	
+		System.out.println("检查"+cellpones.getOs());
 		List<Cellpones> cellpone=cellponesService.obscureFind(cellpones);
-		
 		model.addAttribute("cellpone", cellpone);
 		return "obscurefind-list";
 	}

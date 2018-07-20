@@ -33,25 +33,33 @@ public class Cellpones {
 		return brand;
 	}
 	public void setBrand(String brand) {
-		this.brand = brand;
+		if(brand !=null && ! brand.trim().isEmpty()) {
+			this.brand = brand;
+		}
 	}
 	public String getModel() {
 		return model;
 	}
 	public void setModel(String model) {
-		this.model = model;
+		if(model !=null && ! model.trim().isEmpty()) {
+			this.model = model;
+		}
 	}
 	public String getOs() {
 		return os;
 	}
 	public void setOs(String os) {
-		this.os = os;
+		if(os !=null && !os.trim().isEmpty()) {
+			this.os = os;
+		}
 	}
 	public String getCpubrand() {
 		return cpubrand;
 	}
 	public void setCpubrand(String cpubrand) {
-		this.cpubrand = cpubrand;
+		if(cpubrand !=null && ! cpubrand.trim().isEmpty()) {
+			this.cpubrand = cpubrand;
+		}
 	}
 	public int getRam() {
 		return ram;
@@ -75,13 +83,19 @@ public class Cellpones {
 		return price;
 	}
 	public void setPrice(int price) {
-		this.price = price;
+			this.price = price;
 	}
 	public String getImages() {
 		return images;
 	}
 	public void setImages(String images) {
 		this.images = images;
+	}
+	@Override
+	public String toString() {
+		return "Cellpones [id=" + id + ", brand=" + brand + ", model=" + model + ", os=" + os + ", cpubrand=" + cpubrand
+				+ ", ram=" + ram + ", color=" + color + ", description=" + description + ", price=" + price
+				+ ", images=" + images + "]";
 	}
     
     

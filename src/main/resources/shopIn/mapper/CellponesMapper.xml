@@ -9,11 +9,20 @@
   	<select id="findOne" resultType="Cellpones">
   		select * from Cellpones where id=#{id}
   	</select>
+  	<!-- 模糊查询语句 -->
   	<select id="obscureFind" resultType="Cellpones">
-  		select * from Cellpones where
-  		  <if test="brand !=null" >
-  		  	<bind name="brand" value="'%'+brand+'%'"/>
-  		 	brand  like #{brand}
-  		  </if>
+  		 select * from Cellpones
+  		 <where>
+	  		  <if test="brand !=null" >
+	  		  	<bind name="brand" value="'%'+brand+'%'"/>
+	  		 	brand  like #{brand}
+	  		  </if> 
+	  		  <if test="os !=null">
+	  		  	and os =#{os}
+	  		  </if> 
+	  		  <if test="cpubrand !=null">
+	  		  	and cpubrand =#{cpubrand}
+	  		  </if>
+  		  </where>
   	</select>
   </mapper>

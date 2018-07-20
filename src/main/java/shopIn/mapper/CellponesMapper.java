@@ -10,5 +10,5 @@ public interface CellponesMapper {
 	
 	Cellpones findOne(int id);
 	
-	List<Cellpones> obscureFind(Cellpones cellpones);
+	List<Cellpones>  obscureFind(Cellpones cellpones);
 }
