@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <t:layout>
 		<h2>欢迎来到首页 http://localhost:8080/shop-in/</h2>
 		
@@ -50,6 +51,12 @@
 						 <img  src="${contextPath}/assets/images/cellpone/${cellpones.images }"
 						  width="100" height="100" align="middle"></a></li>
 						<li><a href="${contextPath }/cellpones/${cellpones.id }/details">${cellpones.brand }</a>				
+						</li>
+						<li>
+							<form action="${contextPath}/uc/carts/add" method="post">
+							<sec:csrfInput />
+								<button type="submit">加入购物车</button>
+							</form>
 						</li>																
 					</c:forEach>		
 				</ul>

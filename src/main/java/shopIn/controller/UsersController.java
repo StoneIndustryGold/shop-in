@@ -21,7 +21,7 @@ public class UsersController {
 	}
 
 
-	@RequestMapping(method=RequestMethod.GET,value="/users/list")	
+	@RequestMapping(method=RequestMethod.GET,value="/uc/users/list")	
 	public String usersfindAll(Model model) {
 		List<Users> users=usersService.fondAll();
 		for(Users u:users) {

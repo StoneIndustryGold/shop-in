@@ -17,8 +17,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	public void configure(HttpSecurity http)throws Exception {
 		http
 		    .authorizeRequests()//配置授权
-		    
-		    .antMatchers("/login","/register","/","/cellpones/{id}/details","/obscurefind/list").permitAll()// 登录页面允许所有用户访问（包括匿名）
+		    .antMatchers("/uc/**").authenticated()//uc下的需要登陆用户才可以访问
+		    .antMatchers("/**").permitAll()// 登录页面允许所有用户访问（包括匿名）
 		    //.antMatchers("/register").permitAll()//注册用户
 		    //.antMatchers("/**").authenticated()// 其他页面仅限于登录用户访问
 		 .and()

@@ -1,5 +1,7 @@
 package shopIn.pojo;
 
+import java.util.List;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
@@ -23,6 +25,9 @@ public class Cellpones {
     private Integer price;//--价格
     @Size(min=1,max=64,message="1~64字")
     private String images;// --图片
+    
+    private List<Carts> carts;//一个商品有多个购物车
+    private List<Users> users;//一个商品多个用户
 	public Integer getId() {
 		return id;
 	}
@@ -90,6 +95,20 @@ public class Cellpones {
 	}
 	public void setImages(String images) {
 		this.images = images;
+	}
+	
+	
+	public List<Carts> getCarts() {
+		return carts;
+	}
+	public void setCarts(List<Carts> carts) {
+		this.carts = carts;
+	}
+	public List<Users> getUsers() {
+		return users;
+	}
+	public void setUsers(List<Users> users) {
+		this.users = users;
 	}
 	@Override
 	public String toString() {

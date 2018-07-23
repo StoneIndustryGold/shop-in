@@ -1,6 +1,7 @@
 package shopIn.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -24,6 +25,11 @@ public class Users {
     private Boolean enabled;   
     private String images;
     private Date lastLoginTime;
+    
+    private Carts carts;
+    
+    private List<Cellpones> cellpones;
+    
 	public Integer getId() {
 		return id;
 	}
@@ -77,6 +83,18 @@ public class Users {
 	}
 	public void setLastLoginTime(Date lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
+	}
+	public Carts getCarts() {
+		return carts;
+	}
+	public void setCarts(Carts carts) {
+		this.carts = carts;
+	}
+	public List<Cellpones> getCellpones() {
+		return cellpones;
+	}
+	public void setCellpones(List<Cellpones> cellpones) {
+		this.cellpones = cellpones;
 	}
     
     
