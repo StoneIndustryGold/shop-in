@@ -46,7 +46,7 @@
 			<div>
 				<ul>
 					<c:forEach items="${cellpones }" var="cellpones">			
-						<li>
+						<li>${cellpones.id }
 						<a href="${contextPath }/cellpones/${cellpones.id }/details">
 						 <img  src="${contextPath}/assets/images/cellpone/${cellpones.images }"
 						  width="100" height="100" align="middle"></a></li>
@@ -55,6 +55,7 @@
 						<li>
 							<form action="${contextPath}/uc/carts/add" method="post">
 							<sec:csrfInput />
+							<input type="hidden" name="cellponesId"  value="${cellpones.id }">
 								<button type="submit">加入购物车</button>
 							</form>
 						</li>																
