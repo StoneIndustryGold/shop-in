@@ -59,7 +59,9 @@
 								<button type="submit">加入购物车</button>
 							</form>
 						</li>																
-					</c:forEach>		
+					</c:forEach>
+						
 				</ul>
 			</div>
+					<a href="${contextPath }/uc/carts/details">购物详情</a>		
 	</t:layout>
