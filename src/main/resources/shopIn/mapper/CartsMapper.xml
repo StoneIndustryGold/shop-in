@@ -43,6 +43,7 @@
 		         inner join users u on u.id=c.user_id
 		         left join cellpones ce on ce.id=c.cellpone_id
 		where c.user_id=#{usersId}
+		order by ce.id
   	</select>
   	<resultMap type="Carts" id="cartsSeek">	
   		<id column="user_id"/>
