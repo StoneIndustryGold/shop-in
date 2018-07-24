@@ -38,12 +38,32 @@ public class CartsIml implements CartsService {
 	}
 
 	@Override
-	public void uptedaCarts(Integer usersId, Integer cellponesId) {
+	public void uptedaCarts(Integer usersId, Integer cellponesId) {//取消购物
 		//如果没有就返回，你妹的
 		if(cartsMapper.seekCarts(usersId, cellponesId)) {//先查找，当前用户是否有购物车，
 			cartsMapper.deletCarts(cellponesId);
 			System.out.println("有东西");//有就删除购物车相关的id，cartsMapper.deletCarts(cellponesId);
 		}
+	}
+
+	@Override
+	public void minusCarts(Integer usersId, Integer cellponesId,int amount) {//减去购物数量
+			Integer a=cartsMapper.finCarts(usersId, cellponesId,amount);
+			if(a==1 || a==null) {
+				cartsMapper.deletCarts(cellponesId);//删除
+				
+			}else {
+				cartsMapper.minusCarts(usersId,cellponesId,amount);//则数量-1
+				
+			}
+		
+	}
+
+	@Override
+	public void uptedaCartsAdd(Integer usersId, Integer cellponesId, int amount) {
+	
+			cartsMapper.incItemAmount(usersId, cellponesId, amount);//调用添加方法进行 加1		
+	
 	}
 
 }

@@ -14,6 +14,10 @@ public interface CartsService {
 
 	void uptedaCarts(Integer usersId, Integer cellponesId);
 
+	void minusCarts(Integer usersId, Integer cellponesId, int amount);
+
+	void uptedaCartsAdd(Integer usersId, Integer cellponesId, int amount);
+
 	
 
 }

@@ -18,14 +18,26 @@
 				<li>
 				<img src="${contextPath }/assets/images/cellpone/${item.cellpones.images }"><br>${item.cellpones.brand} </li>
 				<li>￥：${item.cellpones.price / 100 }美金</li>
-				<li>${item.count }</li>				
+							
 				<li>
 					<form action="${contextPath }/uc/carts/upteda" method="post">
-					<sec:csrfInput/>
+						<sec:csrfInput/>
+							<input type="hidden" name="cellponesId" value="${item.cellpones.id }">
+							<button type="submit">取消订单</button>
+					</form>	<br>
+					<form action="${contextPath }/uc/carts/uptedaCartsAdd" method="post">
+						<sec:csrfInput/>
 						<input type="hidden" name="cellponesId" value="${item.cellpones.id }">
-						<button type="submit">取消订单</button>
-					</form>					
+						<button type="submit"><h3>+</h3></button>
+					</form>	
+					<li>${item.count }</li>				
+					<form action="${contextPath }/uc/carts/uptedaCarts" method="post">
+						<sec:csrfInput/>
+						<input type="hidden" name="cellponesId" value="${item.cellpones.id }">
+						<button type="submit"><h1>-</h1></button>
+					</form>				
 				</li>
+				
 			</c:forEach>
 		</ul>
 		<a href="${contextPath }/">返回</a>

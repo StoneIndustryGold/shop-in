@@ -26,8 +26,13 @@
   		delete  from  carts where cellpone_id=#{cellponesId}
   	</delete>
   	
-  
-  	
+	<select id="finCarts"  resultType="Integer">
+			select count from carts where  cellpone_id=#{cellponesId}  and user_id=#{usersId}
+	</select>
+  	<delete id="minusCarts">
+  		 		update carts set count=count-#{amount}
+		where user_id=#{usersId} and cellpone_id=#{cellponesId}
+  	</delete>
   	
   	<select id="finCartsItems" resultMap="cartsSeek">
 		select 
@@ -50,4 +55,5 @@
 			<result column="cellpones_images" property="images"/>
 		</association>
   	</resultMap>
+  	
   </mapper>

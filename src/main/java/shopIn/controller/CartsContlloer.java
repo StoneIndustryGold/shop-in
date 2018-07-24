@@ -39,6 +39,24 @@ public class CartsContlloer {
 			cartsService.uptedaCarts(usersId,cellponesId);//当前用户点击取消订单时执行这方法。
 		return "redirect:/uc/carts/details";
 	}
+	@RequestMapping(method=RequestMethod.POST,value="/uc/carts/uptedaCarts")
+	public String uptedaCarts(@RequestParam Integer cellponesId,
+							  @AuthenticationPrincipal(expression = "users.id") Integer usersId) {
+		System.out.println("asf:"+cellponesId);
+		cartsService.minusCarts(usersId,cellponesId,1);//当点击减去--按钮是执行这方法
+		return "redirect:/uc/carts/details";
+	}
+	@RequestMapping(method=RequestMethod.POST,value="/uc/carts/uptedaCartsAdd")
+	public String uptedaCartsAdd(@RequestParam Integer cellponesId,
+			 					@AuthenticationPrincipal(expression = "users.id") Integer usersId) {//当点击加号是执行这方法--加一方法
+		System.out.println("商品："+cellponesId);
+		cartsService.uptedaCartsAdd(usersId,cellponesId,1);
+		return "redirect:/uc/carts/details";
+	}
+	
+	
+	
+	
 	
 	@RequestMapping(method=RequestMethod.GET,value="/uc/carts/details")
 	public String cartsSee(@AuthenticationPrincipal(expression ="users.id") Integer usersId,

@@ -26,4 +26,12 @@ public interface CartsMapper {
 						@Param("cellponesId")Integer cellponesId);
 
 	void deletCarts(@Param("cellponesId")Integer cellponesId);
+
+	Integer finCarts(@Param("usersId")Integer usersId,
+					@Param("cellponesId")Integer cellponesId, 
+					@Param("amount")int amount);
+
+	void minusCarts(@Param("usersId")Integer usersId,
+					@Param("cellponesId")Integer cellponesId,
+					@Param("amount")int amount);
 }
