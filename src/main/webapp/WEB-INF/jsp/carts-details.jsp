@@ -36,11 +36,14 @@
 						<input type="hidden" name="cellponesId" value="${item.cellpones.id }">
 						<button type="submit"><h1>-</h1></button>
 					</form>				
-				</li>
-				
-			</c:forEach>
+				</li>				
+			</c:forEach>		
 		</ul>
-		<a href="${contextPath }/">返回</a>
 	</div>
+	<div>
+		总价：${cartsItem.totalCost() /100}元，数据库是分
+	</div>
+		<a href="${contextPath }/">返回</a>
+	
 </body>
 </html>
