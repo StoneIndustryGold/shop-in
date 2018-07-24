@@ -3,16 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="shopIn.mapper.CartsMapper">
+  
   	<select id="itemExists" resultType="boolean"><!-- 查找方法 -->
   		 select count(*) from carts where user_id=#{usersId} and cellpone_id=#{cellponesId}
   	</select>
+  	
   	<update id="incItemAmount"><!-- 更新方法 -->
   		update carts set count=count+#{amount}
 		where user_id=#{usersId} and cellpone_id=#{cellponesId}
   	</update>
+  	
   	<insert id="createItem"><!-- 插入方法 -->
   		insert into carts values(#{usersId},#{cellponesId},#{amount})
   	</insert>
+  	
+  	
+  	<select id="seekCarts" resultType="boolean" flushCache="true" >
+  		 select count(*) from carts where user_id=#{usersId} and cellpone_id=#{cellponesId}
+  	</select>
+  	
+  	<delete id="deletCarts">
+  		delete  from  carts where cellpone_id=#{cellponesId}
+  	</delete>
+  	
+  
+  	
+  	
   	<select id="finCartsItems" resultMap="cartsSeek">
 		select 
 		       c.user_id user_id,c.cellpone_id cellpone_id ,c.count count,

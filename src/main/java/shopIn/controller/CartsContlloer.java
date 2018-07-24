@@ -32,7 +32,13 @@ public class CartsContlloer {
 		cartsService.addToCart(usersId,cellponesId,1);
 		return "redirect:/";
 	}
-
+	@RequestMapping(method=RequestMethod.POST,value="/uc/carts/upteda")
+	public String upteda(@RequestParam Integer cellponesId,
+			@AuthenticationPrincipal(expression = "users.id") Integer usersId ) {
+			System.out.println("取消:"+cellponesId);
+			cartsService.uptedaCarts(usersId,cellponesId);//当前用户点击取消订单时执行这方法。
+		return "redirect:/uc/carts/details";
+	}
 	
 	@RequestMapping(method=RequestMethod.GET,value="/uc/carts/details")
 	public String cartsSee(@AuthenticationPrincipal(expression ="users.id") Integer usersId,

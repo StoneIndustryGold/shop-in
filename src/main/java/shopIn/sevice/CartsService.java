@@ -12,6 +12,8 @@ public interface CartsService {
 
 	List<Carts> finCartsItems(Integer usersId);
 
+	void uptedaCarts(Integer usersId, Integer cellponesId);
+
 	
 
 }

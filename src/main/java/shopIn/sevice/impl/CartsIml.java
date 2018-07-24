@@ -37,4 +37,13 @@ public class CartsIml implements CartsService {
 		return cartsMapper.finCartsItems(usersId);
 	}
 
+	@Override
+	public void uptedaCarts(Integer usersId, Integer cellponesId) {
+		//如果没有就返回，你妹的
+		if(cartsMapper.seekCarts(usersId, cellponesId)) {//先查找，当前用户是否有购物车，
+			cartsMapper.deletCarts(cellponesId);
+			System.out.println("有东西");//有就删除购物车相关的id，cartsMapper.deletCarts(cellponesId);
+		}
+	}
+
 }

@@ -21,4 +21,9 @@ public interface CartsMapper {
 					@Param("amount")int amount);
 	
 	List<Carts> finCartsItems(@Param("usersId")Integer usersId);
+	
+	boolean seekCarts(@Param("usersId")Integer usersId,//先查找
+						@Param("cellponesId")Integer cellponesId);
+
+	void deletCarts(@Param("cellponesId")Integer cellponesId);
 }
