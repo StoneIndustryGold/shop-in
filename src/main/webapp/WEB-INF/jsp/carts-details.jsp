@@ -27,7 +27,8 @@
 						<input type="hidden" name="cellponesId" value="${item.cellpones.id }">
 						<button type="submit"><h3>+</h3></button>
 					</form>	
-					<li>${item.count }</li>				
+					<li>${item.count }</li>		
+				<li>		
 					<form action="${contextPath }/uc/carts/uptedaCarts" method="post">
 						<sec:csrfInput/>
 						<input type="hidden" name="cellponesId" value="${item.cellpones.id }">

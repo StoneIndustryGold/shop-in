@@ -4,6 +4,7 @@
     <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
      <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
      <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+     <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
      <c:set var="title" value="${addres.id == null ? '添加' : '修改'}"></c:set>
      
 <t:layout>

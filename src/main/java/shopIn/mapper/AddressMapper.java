@@ -16,4 +16,6 @@ public interface AddressMapper {
 	Address finOneAddress(int id);
 	
 	void updateAddress(Address address);
+	
+	void deleteAddress(int id);
 }

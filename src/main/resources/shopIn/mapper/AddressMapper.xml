@@ -18,4 +18,8 @@
 		update Address set  ConsigneeName=#{consigneeName} ,
 		 phone=#{phone} , DetailsAddress=#{detailsAddress} where id=#{id}
 	</update>
+	<delete id="deleteAddress">
+		delete  from Address  where id=#{id}
+	</delete>
+	
   </mapper>

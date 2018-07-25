@@ -26,7 +26,7 @@ public class AddressController {
 	public AddressController(AddressService addressService) {
 		this.addressService = addressService;
 	}
-
+	//添加方法
 	@RequestMapping(method=RequestMethod.GET,value="/uc/address/add")
 	public String addAdderess(@ModelAttribute Address address,
 												Model model,
@@ -35,7 +35,7 @@ public class AddressController {
 			
 	return "address-add";	
 	}
-	
+	//添加方法
 	@RequestMapping(method=RequestMethod.POST,value="/uc/address/add")
 	public String addAddere(@ModelAttribute  @Valid Address address,
 											BindingResult  bindingResult,
@@ -46,8 +46,9 @@ public class AddressController {
 			}
 			addressService.addAddress(address,usersId);
 		
-		return "redirect:/uc/address/add";	
+		return "redirect:/uc/address/list";	
 	}
+	//详情页方法
 	@RequestMapping(method=RequestMethod.GET,value="/uc/address/list")
 	public String updateAdderess(@ModelAttribute Address address,
 													Model model,
@@ -57,6 +58,7 @@ public class AddressController {
 		model.addAttribute("addres", addres);
 		return "address-list";
 	}
+	//修改前修改方法
 	@RequestMapping(method=RequestMethod.GET,value="/uc/address/{id}/update")
 	public String finOneAddress(@ModelAttribute Address address ,
 								@PathVariable int id ,
@@ -67,11 +69,18 @@ public class AddressController {
 		model.addAttribute("addres", addres);
 		return "address-add";
 	}
+	//修改方法
 	@RequestMapping(method=RequestMethod.POST,value="/uc/address/{id}/update")
 	public String ubdateAddre(@ModelAttribute Address address) {
 		System.out.println(address);
 		
 		addressService.updateAddress(address);
+		return "redirect:/uc/address/list";
+	}
+	@RequestMapping(method=RequestMethod.POST,value="/uc/address/{id}/delete")
+	public String deleteAddress(@PathVariable int id) {
+		System.out.println(id);
+		addressService.deleteAddress(id);
 		return "redirect:/uc/address/list";
 	}
 }

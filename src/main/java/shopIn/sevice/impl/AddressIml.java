@@ -48,6 +48,13 @@ public class AddressIml implements AddressService {
 	}
 
 
+	@Override
+	public void deleteAddress(int id) {
+		
+		addressMapper.deleteAddress(id);
+	}
+
+
 
 
 }
