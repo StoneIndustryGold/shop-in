@@ -4,13 +4,10 @@
     <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
      <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
       <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+      <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+      
+<t:layout>
+
 	<h3>购物车详情</h3>
 	<div>
 		<ul>
@@ -44,6 +41,5 @@
 		总价：${cartsItem.totalCost() /100}元，数据库是分
 	</div>
 		<a href="${contextPath }/">返回</a>
-	
-</body>
-</html>
+		<br><br><br><br><br><br><br><br><br><br>
+</t:layout>

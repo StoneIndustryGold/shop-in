@@ -6,10 +6,11 @@
 <html>
 	<body>
 		<div class="header">
+		
 			<ul>
-				<li><a href="${contextPath }/users/list">作者列表</a></li>
-				<li><a href="http://localhost:8080/shop/Cellpones/list">手机商城</a></li>
-				<li><a href="${contextPath }/users/list">作者列表</a> </li>			
+				<li><a href="${contextPath }/uc/carts/details">购物详情</a></li>
+				<li><a href="${contextPath }/">手机商城</a></li>
+				<li><a href="${contextPath }/uc/address/add">添加地址</a> </li>			
 			</ul>
 		
 		

@@ -63,5 +63,5 @@
 						
 				</ul>
 			</div>
-					<a href="${contextPath }/uc/carts/details">购物详情</a>		
+						
 	</t:layout>

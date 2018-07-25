@@ -10,7 +10,7 @@
 --price--价格
 --images --图片
 
-create table cellpones(----------------------------------------------手机表
+create table cellpones(----------------------------------------------手机商品表
        id integer primary key,
        brand varchar(64) not null,--牌子
        model varchar(64) not null,--型号
@@ -65,19 +65,67 @@ create sequence cellpones_seq
 --手机id
 --数量 
 create table carts(
-       id integer primary key,
+   
        user_id integer not null,
        cellpone_id integer not null,
-       count integer     
-  ) 
-
- create sequence carts_seq
-        INCREMENT BY 1  -- 每次加几个  
+       count integer,
+       --提示这表的外键用户=用户主键id
+       constraint CARTS_FK_USER_ID_USRES foreign key (user_id) references users (id),
+       constraint CARTS_FK_CELLPONE_ID_CELLPONES foreign key (cellpone_id) references  cellpones (id),
+       constraint CARTS_PK primary key (user_id,cellpone_id)--声明这表的主键有两个
+  ); 
+ 
+  
+  
+ --------------------------------------------------------收货地址表
+  create table Address(--收货地址表
+        id integer primary key,
+        user_id integer not null,--外键用户表
+        ConsigneeName varchar(1000) not null,--收货人姓名
+        phone varchar(1000) not null,--电话号码
+        DetailsAddress varchar(2000) not null,--详情地址
+        constraint Address_FK_USER_ID_USRES foreign key (user_id) references users (id)
+ )
+ create sequence Address_seq
+       INCREMENT BY 1  -- 每次加几个  
        START WITH 1    -- 从1开始计数  
        NOMAXVALUE      -- 不设置最大值  
-       NOCYCLE
-       
- alter table carts add foreign key (user_id) references users(id)
- alter table carts add foreign key (cellpone_id)references cellpones(id) 
+       NOCYCLE   
+ select * from Address
+ 
+ 
+ ---------------------------------------------------------订单表
+  create table Orders(--订单表
+        id integer primary key,
+        user_id integer not null,--外键用户id
+        Addres_id integer not null,--外键地址id
+        createtime timestamp,--创建的时间  
+        constraint Orders_Fk_user_id_users foreign key(user_id) references users(id),
+        constraint Orders_FK_Addres_id_Address foreign key(Addres_id)references Address(id) 
+ )
+ 
+  create sequence Orders_seq
+       INCREMENT BY 1  -- 每次加几个  
+       START WITH 1    -- 从1开始计数  
+       NOMAXVALUE      -- 不设置最大值  
+       NOCYCLE   
+ select * from Orders
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
        
                 
