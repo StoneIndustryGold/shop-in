@@ -8,7 +8,7 @@
 <t:layout>
 	<form:form action="" method="post" commandName="address">
 	
-		<c:forEach items="${addres }" var="addre">
+	
 			<div>
 				<label for="consigneeName">收货人姓名</label>
 				<form:input type="text" path="consigneeName" id="consigneeName" value="${addre.consigneeName }"/>
@@ -28,12 +28,7 @@
 				<button type="submit">添加</button>
 			</div>
 			<div>
-			<!--  	<form:form action="" method="post">
-					<button type="submit">删除</button>
-					
-				</form:form>
-				-->
 			</div>
-		</c:forEach>
+		
 	</form:form>
 </t:layout>
