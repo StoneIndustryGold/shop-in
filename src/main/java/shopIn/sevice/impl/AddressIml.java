@@ -34,11 +34,6 @@ public class AddressIml implements AddressService {
 	}
 
 
-	@Override
-	public void updateAddre(Address address, Integer usersId) {
-		
-		//addressMapper.updateAddre(address, usersId);
-		
-	}
+
 
 }

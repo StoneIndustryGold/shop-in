@@ -13,6 +13,4 @@ public interface AddressMapper {
 
 	List<Address> findOne(Integer usersId);
 	
-	void updateAddre(@Param("address")Address address,
-						@Param("usersId")Integer usersId);
 }

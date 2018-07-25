@@ -48,7 +48,7 @@ public class AddressController {
 		
 		return "redirect:/uc/address/add";	
 	}
-	@RequestMapping(method=RequestMethod.GET,value="/uc/address/ubdate")
+	@RequestMapping(method=RequestMethod.GET,value="/uc/address/list")
 	public String updateAdderess(@ModelAttribute Address address,
 													Model model,
 				@AuthenticationPrincipal(expression = "users.id") Integer usersId) {
@@ -57,14 +57,5 @@ public class AddressController {
 		model.addAttribute("addres", addres);
 		return "address-list";
 	}
-	@RequestMapping(method=RequestMethod.POST,value="/uc/address/ubdate")
-	public String updateAddere(@ModelAttribute  @Valid Address address,
-								BindingResult  bindingResult,
-								@AuthenticationPrincipal(expression = "users.id") Integer usersId) {
-		
-		System.out.println(address.getConsigneeName()+"--"+address.getDetailsAddress()+"--"
-				+ "--"+address.getPhone()+"--地址id："+address.getId());
-		addressService.updateAddre(address,usersId);
-		return "redirect:/uc/address/add";
-	}
+	
 }

@@ -12,6 +12,6 @@ public interface AddressService {
 
 	List<Address> finOne(Integer usersId);
 
-	void updateAddre(Address address, Integer usersId);
+	
 	
 }
