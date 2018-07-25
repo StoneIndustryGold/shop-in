@@ -12,14 +12,15 @@ public class Address {//收货地址表
 	 @Size(min=3,message="最少两个")
      private String detailsAddress;//--详情地址
      
-     private Users users;//--关联用户id
+     private Integer users;//--关联用户id
      
      
      
-	public Users getUsers() {
+     
+	public Integer getUsers() {
 		return users;
 	}
-	public void setUsers(Users users) {
+	public void setUsers(Integer users) {
 		this.users = users;
 	}
 	public Integer getId() {

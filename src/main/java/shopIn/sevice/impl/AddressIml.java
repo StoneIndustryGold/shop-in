@@ -1,5 +1,7 @@
 package shopIn.sevice.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,21 @@ public class AddressIml implements AddressService {
 	public void addAddress(Address address, Integer usersId) {
 		addressMapper.addAddress(address, usersId);
 		System.out.println("实现类名字："+address.getConsigneeName()+"地址："+address.getDetailsAddress()+"电话"+address.getPhone());
+	}
+
+
+	@Override
+	public List<Address> finOne(Integer usersId) {
+		
+		return addressMapper.findOne(usersId);
+	}
+
+
+	@Override
+	public void updateAddre(Address address, Integer usersId) {
+		
+		//addressMapper.updateAddre(address, usersId);
+		
 	}
 
 }

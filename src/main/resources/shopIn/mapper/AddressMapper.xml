@@ -8,4 +8,11 @@
   		insert into Address values(Address_seq.nextval,#{usersId},
   							#{address.consigneeName},#{address.phone},#{address.detailsAddress}) 
   	</insert>
+  	<select id="findOne" resultType="Address">
+  		 select * from address where user_id=#{usersId}
+  	</select>
+ <!--   	<update id="updateAddre">
+  		update Address set  ConsigneeName=#{address.consigneeName} ,  phone=#{address.phone} ,
+  		 DetailsAddress=#{address.detailsAddress} where id=#{address.id} and user_id=#{usersId}
+  	</update> -->
   </mapper>
