@@ -4,8 +4,10 @@
     <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
      <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
      <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+     <c:set var="title" value="${addres.id == null ? '添加' : '修改'}"></c:set>
      
 <t:layout>
+	${title}地址 
 	<form:form action="" method="post" commandName="address">
 	
 	
@@ -25,7 +27,7 @@
 				<form:errors path="detailsAddress" cssClass="field-error" ></form:errors>
 			</div>			
 			<div>			
-				<button type="submit">添加</button>
+				<button type="submit">${title}</button>
 			</div>
 			<div>
 			</div>
