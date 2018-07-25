@@ -11,5 +11,11 @@
   	<select id="findOne" resultType="Address">
   		 select * from address where user_id=#{usersId}
   	</select>
-
+	<select id="finOneAddress" resultType="Address">
+		select * from address where id=#{id}
+	</select>
+	<update id="updateAddress">
+		update Address set  ConsigneeName=#{consigneeName} ,
+		 phone=#{phone} , DetailsAddress=#{detailsAddress} where id=#{id}
+	</update>
   </mapper>

@@ -13,4 +13,7 @@ public interface AddressMapper {
 
 	List<Address> findOne(Integer usersId);
 	
+	Address finOneAddress(int id);
+	
+	void updateAddress(Address address);
 }

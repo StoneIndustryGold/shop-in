@@ -34,6 +34,20 @@ public class AddressIml implements AddressService {
 	}
 
 
+	@Override
+	public Address finOneAddress(int id) {
+		
+		return addressMapper.finOneAddress(id);
+	}
+
+
+	@Override
+	public void updateAddress(Address address) {
+		addressMapper.updateAddress(address);
+		
+	}
+
+
 
 
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -57,5 +57,21 @@ public class AddressController {
 		model.addAttribute("addres", addres);
 		return "address-list";
 	}
-	
+	@RequestMapping(method=RequestMethod.GET,value="/uc/address/{id}/update")
+	public String finOneAddress(@ModelAttribute Address address ,
+								@PathVariable int id ,
+								Model model,
+								@AuthenticationPrincipal(expression = "users.id") Integer usersId) {
+		System.out.println(id);
+		Address addres=addressService.finOneAddress(id);
+		model.addAttribute("addres", addres);
+		return "address-add";
+	}
+	@RequestMapping(method=RequestMethod.POST,value="/uc/address/{id}/update")
+	public String ubdateAddre(@ModelAttribute Address address) {
+		System.out.println(address);
+		
+		addressService.updateAddress(address);
+		return "redirect:/uc/address/list";
+	}
 }
