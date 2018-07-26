@@ -5,7 +5,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:layout>
+<t:layout title="地址详情">
 
 	<div>
 		<ul>

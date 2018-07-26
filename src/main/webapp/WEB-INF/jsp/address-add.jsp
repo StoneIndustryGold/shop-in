@@ -7,8 +7,8 @@
      <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
      <c:set var="title" value="${addres.id == null ? '添加' : '修改'}"></c:set>
      
-<t:layout>
-	${title}地址 
+<t:layout title="${title}">
+	
 	<form:form action="" method="post" commandName="address">
 	
 	

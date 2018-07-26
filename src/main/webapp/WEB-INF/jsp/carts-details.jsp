@@ -6,7 +6,7 @@
       <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
       <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
       
-<t:layout>
+<t:layout title="购物车详情">
 
 	<h5>购物车详情</h5>
 	

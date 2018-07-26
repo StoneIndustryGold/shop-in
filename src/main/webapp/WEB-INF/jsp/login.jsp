@@ -6,9 +6,9 @@
     <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
      <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
      
- <t:layout>
+ <t:layout title="登陆页面">
 
-	<h3>登陆页面</h3>
+	
 	
 	<c:if test="${loginError }"><!-- 在控制类已经判断好的直接那就好了 -->
 		<h5 style=" color:red;">用户名或密码错误</h5>

@@ -6,9 +6,9 @@
 	<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 
-<t:layout>
+<t:layout title="手机商城">
 
-	<h3>手机商城</h3>
+	
 										<!-- 取得路劲下的图片，于jsp同级目录下开始                                    限制图片宽                    高度     -->
 	<img src="${pageContext.request.contextPath}/assets/images/cellpone/cellpone_01.png"width="190" height="300" align="middle" >
 	<div>

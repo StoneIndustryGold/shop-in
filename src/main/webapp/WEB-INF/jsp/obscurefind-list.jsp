@@ -4,7 +4,7 @@
     <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
      <c:set var="title" value="${cellpones.id == null ? '添加' : '修改'}"></c:set>
      <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<t:layout>    
+<t:layout title="${title }">    
 		<div>
 			<ul>
 				<c:forEach items="${cellpone }" var="cellpone">

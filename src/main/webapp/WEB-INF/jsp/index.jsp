@@ -5,7 +5,7 @@
  <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
  <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<t:layout>
+<t:layout title="首页">
 		<h2>欢迎来到首页 http://localhost:8080/shop-in/</h2>
 		
 		<form:form action="${contextPath }/obscurefind/list" method="get">

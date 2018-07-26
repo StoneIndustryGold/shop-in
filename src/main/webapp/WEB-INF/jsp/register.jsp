@@ -6,7 +6,7 @@
         <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
         <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
         
-<t:layout>
+<t:layout title="注册">
 		<form:form action="/uc/address/add" method="post" commandName="users">
 			<sec:csrfInput />
 		<div>

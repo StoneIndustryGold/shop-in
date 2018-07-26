@@ -4,7 +4,7 @@
     <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
 	<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:layout><!-- 把详情页传往layout.tag页面 -->
+<t:layout title="集合页面"><!-- 把详情页传往layout.tag页面 -->
 	<div>
 		<ul>
 			

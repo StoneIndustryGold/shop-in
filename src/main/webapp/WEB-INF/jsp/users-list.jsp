@@ -3,8 +3,8 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<t:layout>
-	<h3>用户</h3>
+<t:layout title="用户">
+	<h3></h3>
 	<div>
 		<ul>
 			<c:forEach items="${users }" var="users">
