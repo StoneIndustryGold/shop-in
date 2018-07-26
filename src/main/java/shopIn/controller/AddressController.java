@@ -54,7 +54,7 @@ public class AddressController {
 													Model model,
 				@AuthenticationPrincipal(expression = "users.id") Integer usersId) {
 		
-		List<Address>  addres=addressService.finOne(usersId);
+		List<Address>  addres=addressService.finAll(usersId);
 		model.addAttribute("addres", addres);
 		return "address-list";
 	}

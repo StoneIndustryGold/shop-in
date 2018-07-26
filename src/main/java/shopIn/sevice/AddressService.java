@@ -10,7 +10,7 @@ public interface AddressService {
 
 	void addAddress(Address address, Integer usersId);
 
-	List<Address> finOne(Integer usersId);
+	List<Address> finAll(Integer usersId);
 
 	Address finOneAddress(int id);
 

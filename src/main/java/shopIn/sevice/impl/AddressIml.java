@@ -28,9 +28,9 @@ public class AddressIml implements AddressService {
 
 
 	@Override
-	public List<Address> finOne(Integer usersId) {
+	public List<Address> finAll(Integer usersId) {
 		
-		return addressMapper.findOne(usersId);
+		return addressMapper.finAll(usersId);
 	}
 
 

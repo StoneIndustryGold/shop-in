@@ -11,7 +11,7 @@ public interface AddressMapper {
 	void addAddress(@Param("address")Address address,
 					@Param("usersId") Integer usersId);
 
-	List<Address> findOne(Integer usersId);
+	List<Address> finAll(Integer usersId);
 	
 	Address finOneAddress(int id);
 	
