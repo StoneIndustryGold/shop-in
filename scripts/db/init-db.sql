@@ -111,6 +111,15 @@ create table carts(
        NOCYCLE   
  select * from Orders
  
+  
+ create table OrdersItem(--订单项
+        user_id integer not null,--外键用户
+        cellpone_id  integer not null,--外键手机商品id
+        ampout integer ,
+        constraint OrdersItem_FK_user_id_users foreign key(user_id) references users(id),
+        constraint OrdersItem_FK_c_id_cs foreign key (cellpone_id) references cellpones(id),
+        constraint OrdersItem_PK primary key  (user_id,cellpone_id)      
+ )
  
  
  
