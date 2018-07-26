@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import shopIn.pojo.Carts;
+import shopIn.pojo.CartItem;
 import shopIn.sevice.CartsService;
 
 @Controller
@@ -62,12 +62,9 @@ public class CartsContlloer {
 	public String cartsSee(@AuthenticationPrincipal(expression ="users.id") Integer usersId,
 						   Model model) {
 		System.out.println("购物车："+usersId);//查找购物车有那些商品
-		List<Carts> cartsItems=cartsService.finCartsItems(usersId);
+		Cart carts=cartsService.fondOneByUserID(usersId);
 		
-		for(Carts c:cartsItems) {
-			System.out.println("ee:"+c.getCount());
-		}
-		model.addAttribute("cartsItem", new CartItem(cartsItems));
+		model.addAttribute("cartsItem", carts);
 		return "carts-details";
 	}
 }

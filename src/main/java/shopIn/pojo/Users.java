@@ -26,7 +26,7 @@ public class Users {
     private String images;
     private Date lastLoginTime;
     
-    private Carts carts;
+    private CartItem carts;
     
     private List<Cellpones> cellpones;
     
@@ -84,10 +84,10 @@ public class Users {
 	public void setLastLoginTime(Date lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
 	}
-	public Carts getCarts() {
+	public CartItem getCarts() {
 		return carts;
 	}
-	public void setCarts(Carts carts) {
+	public void setCarts(CartItem carts) {
 		this.carts = carts;
 	}
 	public List<Cellpones> getCellpones() {

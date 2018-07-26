@@ -1,6 +1,6 @@
 package shopIn.pojo;
 
-public class Carts {
+public class CartItem {//这是购物车
   
    private Integer count; //购物数量
    

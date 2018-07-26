@@ -44,12 +44,13 @@
 				</ul>
 			</div>
 			<div>
-				总价：${cartsItem.totalCost() /100}元，数据库是分
-			</div>
+				<div>总价：${cartsItem.totalCost() /100}元，数据库是分</div>
+				<a href="${contextPath }/uc/Orders/add">马上交钱</a>
+			</div>	
 		</c:if>	
 			<c:if test="${cartsItem.totalCost() /100 ==0}">
-								<h3>一首空空送给你</h3>
-							</c:if> 	
+								<h4>一首空空送给你</h4> <a href="${contextPath }/">世界很大，逛一下</a>
+							</c:if><br> 	
 		<a href="${contextPath }/">返回</a>
 		
 		<br><br><br><br><br><br><br><br><br><br>

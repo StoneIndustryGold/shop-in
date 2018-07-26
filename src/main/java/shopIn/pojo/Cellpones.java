@@ -26,7 +26,7 @@ public class Cellpones {
     @Size(min=1,max=64,message="1~64字")
     private String images;// --图片
     
-    private List<Carts> carts;//一个商品有多个购物车
+    private List<CartItem> carts;//一个商品有多个购物车
     private List<Users> users;//一个商品多个用户
 	public Integer getId() {
 		return id;
@@ -98,10 +98,10 @@ public class Cellpones {
 	}
 	
 	
-	public List<Carts> getCarts() {
+	public List<CartItem> getCarts() {
 		return carts;
 	}
-	public void setCarts(List<Carts> carts) {
+	public void setCarts(List<CartItem> carts) {
 		this.carts = carts;
 	}
 	public List<Users> getUsers() {

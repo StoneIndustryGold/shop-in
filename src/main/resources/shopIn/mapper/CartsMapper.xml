@@ -45,7 +45,7 @@
 		where c.user_id=#{usersId}
 		order by ce.id
   	</select>
-  	<resultMap type="Carts" id="cartsSeek">	
+  	<resultMap type="CartItem" id="cartsSeek">	
   		<id column="user_id"/>
   		<id column="cellpone_id"/>
   		<result column="count" property="count"/>

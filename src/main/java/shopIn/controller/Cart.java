@@ -3,21 +3,21 @@ package shopIn.controller;
 import java.util.List;
 
 
-import shopIn.pojo.Carts;
+import shopIn.pojo.CartItem;
 
-public class CartItem {
-	private List<Carts> items;
+public class Cart {//这是购物车项
+	private List<CartItem> items;
 
-	public CartItem(List<Carts> cartsItems) {
+	public Cart(List<CartItem> cartsItems) {
 			this.items = cartsItems;
 		}
 		
-		public List<Carts> getItems() {
+		public List<CartItem> getItems() {
 			return items;
 		}
 	public int totalCost() {
 		int result=0;
-		for(Carts c:items) {
+		for(CartItem c:items) {
 			//从对一关系拿到商品，的价格  乘 当前的数量
 			result +=c.getCellpones().getPrice() * c.getCount();
 		}

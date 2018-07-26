@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import shopIn.pojo.Carts;
+import shopIn.controller.Cart;
+import shopIn.pojo.CartItem;
 
 public interface CartsMapper {
 	
@@ -20,7 +21,7 @@ public interface CartsMapper {
 					@Param("cellponesId")Integer cellponesId,
 					@Param("amount")int amount);
 	
-	List<Carts> finCartsItems(@Param("usersId")Integer usersId);
+	List<CartItem> finCartsItems(@Param("usersId")Integer usersId);
 	
 	boolean seekCarts(@Param("usersId")Integer usersId,//先查找
 						@Param("cellponesId")Integer cellponesId);

@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import shopIn.controller.Cart;
 import shopIn.mapper.CartsMapper;
-import shopIn.pojo.Carts;
+import shopIn.pojo.CartItem;
 import shopIn.sevice.CartsService;
 @Service
 @Transactional
@@ -31,15 +32,13 @@ public class CartsIml implements CartsService {
 	}
 
 
-	@Override
-	public List<Carts> finCartsItems(Integer usersId) {
+	private List<CartItem> finCartsItems(Integer usersId) {//属性私有了，只有当前得类可以调用
 		
 		return cartsMapper.finCartsItems(usersId);
 	}
 
 	@Override
 	public void uptedaCarts(Integer usersId, Integer cellponesId) {//取消购物
-		//如果没有就返回，你妹的
 		if(cartsMapper.seekCarts(usersId, cellponesId)) {//先查找，当前用户是否有购物车，
 			cartsMapper.deletCarts(cellponesId);
 			System.out.println("有东西");//有就删除购物车相关的id，cartsMapper.deletCarts(cellponesId);
@@ -64,6 +63,12 @@ public class CartsIml implements CartsService {
 	
 			cartsMapper.incItemAmount(usersId, cellponesId, amount);//调用添加方法进行 加1		
 	
+	}
+
+	@Override
+	public Cart fondOneByUserID(Integer usersId) {
+		
+		return new Cart(finCartsItems(usersId));//调用了上面的私有方法，再往Service返回，查到的数据
 	}
 
 }
