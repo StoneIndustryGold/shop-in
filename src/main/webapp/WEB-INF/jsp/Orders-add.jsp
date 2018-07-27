@@ -20,10 +20,11 @@
 			总记：${cartsItem.totalCost() / 100 } 元
 		</div>
 	</div>
-	 <form:form action="" method="post" commandName="orders"><!-- 不写form表单的话就调用实体 -->
+	 <form:form action="" method="post" commandName="ordersForm"><!-- 不写form表单的话就调用实体 -->
 		<div>
-			<label></label>
-			<form:select path="address" ><!--orders表单下的address收货的址对一关系  -->
+			<label for="AddressId"></label>
+			<form:select path="AddressId" ><!--orders表单下的address收货的址对一关系  -->
+				
 				<form:option value="">--请选择-- </form:option>
 				<form:options items="${addres}" 
 							  itemLabel="detailsAddress"
@@ -31,9 +32,9 @@
 				
 			</form:select>
 		</div>
-	<div>
-		<button type="submit">提交</button>
-	</div>
+				<div>
+					<button type="submit">提交</button>
+				</div>
 	</form:form> 
 </t:layout>
 
