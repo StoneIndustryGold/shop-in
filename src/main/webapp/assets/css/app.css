@@ -1,0 +1,6 @@
+@charset "UTF-8";
+.footer {
+ margin-top: 50px;
+ border-top: 1px solid lightgray;
+ color: red;
+}
