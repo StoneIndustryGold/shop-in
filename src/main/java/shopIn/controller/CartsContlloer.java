@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import shopIn.pojo.CartItem;
+import shopIn.pojo.Cart;
+import shopIn.pojo.Item.CartItem;
 import shopIn.sevice.CartsService;
 
 @Controller

@@ -1,9 +1,8 @@
-package shopIn.controller;
+package shopIn.pojo;
 
 import java.util.List;
 
-
-import shopIn.pojo.CartItem;
+import shopIn.pojo.Item.CartItem;
 
 public class Cart {//这是购物车项
 	private List<CartItem> items;

@@ -2,8 +2,8 @@ package shopIn.sevice;
 
 import java.util.List;
 
-import shopIn.controller.Cart;
-import shopIn.pojo.CartItem;
+import shopIn.pojo.Cart;
+import shopIn.pojo.Item.CartItem;
 
 public interface CartsService {
 

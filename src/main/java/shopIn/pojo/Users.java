@@ -9,6 +9,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import shopIn.Sex;
+import shopIn.pojo.Item.CartItem;
 
 public class Users {
     private Integer id ;

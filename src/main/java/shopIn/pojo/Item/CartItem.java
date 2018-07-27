@@ -1,4 +1,6 @@
-package shopIn.pojo;
+package shopIn.pojo.Item;
+
+import shopIn.pojo.Cellpones;
 
 public class CartItem {//这是购物车
   

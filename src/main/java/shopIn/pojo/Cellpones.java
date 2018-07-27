@@ -5,7 +5,9 @@ import java.util.List;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
-public class Cellpones {
+import shopIn.pojo.Item.CartItem;
+
+public class Cellpones {//商品
     private Integer id;
     @Size(min=1,max=64,message="1~64字")
     private String brand ;//--牌子

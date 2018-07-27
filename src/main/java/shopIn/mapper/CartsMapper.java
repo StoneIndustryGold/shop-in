@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import shopIn.controller.Cart;
-import shopIn.pojo.CartItem;
+import shopIn.pojo.Cart;
+import shopIn.pojo.Item.CartItem;
 
 public interface CartsMapper {
 	

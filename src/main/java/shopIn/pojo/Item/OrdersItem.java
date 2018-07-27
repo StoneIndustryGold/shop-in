@@ -1,6 +1,8 @@
-package shopIn.pojo;
+package shopIn.pojo.Item;
 
-public class OrdersItem {
+import shopIn.pojo.Cellpones;
+
+public class OrdersItem {//订单项
 	private Integer ordersId;
 	private Cellpones cellpones;
 	private Integer ampout;

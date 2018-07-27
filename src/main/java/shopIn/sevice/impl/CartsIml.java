@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import shopIn.controller.Cart;
 import shopIn.mapper.CartsMapper;
-import shopIn.pojo.CartItem;
+import shopIn.pojo.Cart;
+import shopIn.pojo.Item.CartItem;
 import shopIn.sevice.CartsService;
 @Service
 @Transactional
