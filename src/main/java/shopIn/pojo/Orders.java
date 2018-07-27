@@ -1,12 +1,14 @@
 package shopIn.pojo;
 
+import java.util.Date;
+
 import javax.xml.crypto.Data;
 
 public class Orders {//订单表
 	private Integer id;
     private Integer userId ;//当前用户id
     private Address address;//对一的收货地址表
-    private Data createtime;//订单形成的时间
+    private Date createtime;//订单形成的时间
     
     
 	public Integer getId() {
@@ -27,10 +29,10 @@ public class Orders {//订单表
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	public Data getCreatetime() {
+	public Date getCreatetime() {
 		return createtime;
 	}
-	public void setCreatetime(Data createtime) {
+	public void setCreatetime(Date createtime) {
 		this.createtime = createtime;
 	}
     

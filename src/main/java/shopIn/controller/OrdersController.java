@@ -19,18 +19,20 @@ import shopIn.pojo.Address;
 import shopIn.pojo.Orders;
 import shopIn.sevice.AddressService;
 import shopIn.sevice.CartsService;
+import shopIn.sevice.OrdersService;
 
 @Controller
 public class OrdersController {//订单控制类
 	private CartsService cartsService;
 	private AddressService addressService;
-	
+	private OrdersService ordersService;
 	@Autowired
-	public OrdersController(CartsService cartsService, AddressService addressService) {
-		super();
+	public OrdersController(CartsService cartsService, AddressService addressService, OrdersService ordersService) {
 		this.cartsService = cartsService;
 		this.addressService = addressService;
+		this.ordersService = ordersService;
 	}
+
 
 
 	//订单生成中。。
@@ -58,9 +60,11 @@ public class OrdersController {//订单控制类
 						 BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			refactoring(usersId, model);
+			
 			return "Orders-add";
 		}
 		System.out.println("了空间啊："+ordersForm.getAddressId());
+		Orders orders=ordersService.create(usersId,ordersForm.getAddressId());
 		return "redirect:/";
 	}
 }
