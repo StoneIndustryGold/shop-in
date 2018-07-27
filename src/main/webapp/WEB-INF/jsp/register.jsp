@@ -7,6 +7,10 @@
         <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
         
 <t:layout title="注册">
+	 	<jsp:attribute name="css">
+    		<link href="${contextPath}/assets/css/form.css" rel="stylesheet">
+  		</jsp:attribute>
+  		<jsp:body>
 		<form:form action="/uc/address/add" method="post" commandName="users">
 			<sec:csrfInput />
 		<div>
@@ -61,5 +65,6 @@
 			<button type="submit">注册</button>		
 		</div>
 	</form:form>
+	</jsp:body>	
 <br><br><br><br><br><br><br><br><br>
 </t:layout>

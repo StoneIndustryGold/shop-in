@@ -7,7 +7,10 @@
       <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
       
 <t:layout title="购物车详情">
-
+	<jsp:attribute name="css">
+		<link href="${contextPath}/assets/css/form.css" rel="stylesheet">
+	</jsp:attribute>
+	<jsp:body>
 	<h5>购物车详情</h5>
 	
 		<c:if test="${cartsItem.totalCost() /100 !=0}">
@@ -52,7 +55,7 @@
 								<h4>一首空空送给你</h4> <a href="${contextPath }/">世界很大，逛一下</a>
 							</c:if><br> 	
 		<a href="${contextPath }/">返回</a>
-		
+		</jsp:body>
 		<br><br><br><br><br><br><br><br><br><br>
 </t:layout>
 

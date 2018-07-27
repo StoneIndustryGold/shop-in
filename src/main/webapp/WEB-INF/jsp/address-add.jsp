@@ -8,7 +8,10 @@
      <c:set var="title" value="${addres.id == null ? '添加' : '修改'}"></c:set>
      
 <t:layout title="${title}">
-	
+		<jsp:attribute name="css">
+			<link href="${contextPath}/assets/css/form.css" rel="stylesheet">
+		</jsp:attribute>
+	<jsp:body>	
 	<form:form action="" method="post" commandName="address">
 	
 	
@@ -34,4 +37,5 @@
 			</div>
 		
 	</form:form>
+	</jsp:body>
 </t:layout>
