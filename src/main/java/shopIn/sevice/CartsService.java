@@ -21,6 +21,8 @@ public interface CartsService {
 
 	Cart fondOneByUserID(Integer usersId);//购物车详情--也调用了这个方法---集合去掉了
 
+	void delete(Integer usersId);
+
 	
 
 }

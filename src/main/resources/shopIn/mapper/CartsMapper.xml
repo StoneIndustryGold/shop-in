@@ -33,7 +33,9 @@
   		 		update carts set count=count-#{amount}
 		where user_id=#{usersId} and cellpone_id=#{cellponesId}
   	</delete>
-  	
+  	<delete id="delete">
+  		delete from carts  where  user_id=#{usersId} 
+  	</delete>
   	<select id="finCartsItems" resultMap="cartsSeek">
 		select 
 		       c.user_id user_id,c.cellpone_id cellpone_id ,c.count count,

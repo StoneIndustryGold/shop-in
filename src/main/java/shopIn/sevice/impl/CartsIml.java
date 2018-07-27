@@ -71,4 +71,10 @@ public class CartsIml implements CartsService {
 		return new Cart(finCartsItems(usersId));//调用了上面的私有方法，再往Service返回，查到的数据
 	}
 
+	@Override
+	public void delete(Integer usersId) {
+		cartsMapper.delete(usersId);
+		
+	}
+
 }
