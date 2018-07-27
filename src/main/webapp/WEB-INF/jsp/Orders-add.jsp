@@ -6,8 +6,13 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+
 <t:layout title="正在生成订单......">
-		提示：即将购买以下商品
+ 	<jsp:attribute name="css">
+    	<link href="${contextPath}/assets/css/form.css" rel="stylesheet">
+  	</jsp:attribute>	
+		
+ <jsp:body>  		
 	<div>
 		<ul>
 			<c:forEach items="${cartsItem.items }" var="item">
@@ -37,6 +42,7 @@
 					<button type="submit">提交</button>
 				</div>
 	</form:form> 
+</jsp:body>	
 </t:layout>
 
 

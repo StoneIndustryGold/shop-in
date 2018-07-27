@@ -12,6 +12,11 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
+	<head>
+		<title>${title}</title>
+		<link href="${contextPath}/assets/css/app.css" rel="stylesheet">
+		<jsp:invoke fragment="css"/> <!-- 将css标记片段插入此处 -->
+	</head>
 	<body>
 		<div class="header">
 		
