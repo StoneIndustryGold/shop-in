@@ -31,6 +31,7 @@
 							  itemValue="id"/><!-- 传出去的 是id -->
 				
 			</form:select>
+			<form:errors path="AddressId" cssClass="field-error" ></form:errors>
 		</div>
 				<div>
 					<button type="submit">提交</button>

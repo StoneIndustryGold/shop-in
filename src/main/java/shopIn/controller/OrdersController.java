@@ -33,23 +33,33 @@ public class OrdersController {//订单控制类
 	}
 
 
-
+	//订单生成中。。
 	@RequestMapping(method=RequestMethod.GET,value="/uc/Orders/add")
 	public String add(@ModelAttribute OrdersForm ordersForm,
 					@AuthenticationPrincipal(expression = "users.id") Integer usersId,
 					Model model) {
+		refactoring(usersId, model);
+		return "Orders-add";
+	}
+
+
+	//重构方法
+	private void refactoring(Integer usersId, Model model) {
 		Cart cartsItem=cartsService.fondOneByUserID(usersId);
 		model.addAttribute("cartsItem", cartsItem);
 		
 		List<Address> addres=addressService.finAll(usersId);//查找购物车
 		model.addAttribute("addres", addres);
-		return "Orders-add";
 	}
+	//生成订单
 	@RequestMapping(method=RequestMethod.POST,value="/uc/Orders/add")
 	public String create(@AuthenticationPrincipal(expression = "users.id") Integer usersId,
 						 @ModelAttribute   @Valid OrdersForm ordersForm,
-						 BindingResult bindingResult) {
-		
+						 BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			refactoring(usersId, model);
+			return "Orders-add";
+		}
 		System.out.println("了空间啊："+ordersForm.getAddressId());
 		return "redirect:/";
 	}
