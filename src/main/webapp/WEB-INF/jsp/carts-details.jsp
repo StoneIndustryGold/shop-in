@@ -56,8 +56,8 @@
 							</c:if><br> 	
 		<a href="${contextPath }/">返回</a>
 		</jsp:body>
-		<br><br><br><br><br><br><br><br><br><br>
 </t:layout>
+		<br><br><br><br><br><br><br><br><br><br>
 
 
 

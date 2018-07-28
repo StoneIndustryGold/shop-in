@@ -7,10 +7,7 @@
 <%@ attribute name="css" fragment="true" %> <!-- fragment设为true意味着该参数的值是标记片段 -->
 <%@ attribute name="js" fragment="true" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
 	<head>
 		<title>${title}</title>
@@ -27,7 +24,7 @@
 				<li><a href="${contextPath }/uc/address/list">地址详情</a> </li>			
 			</ul>
 		
-		
+			<!--手动创建的页面  -->
 			<sec:authorize access="isAuthenticated()"> 
                  当前用户：<sec:authentication property="principal.username" /><br>
       	    性别：<sec:authentication property="principal.users.sex" /><br>
@@ -55,13 +52,13 @@
 		    
 		<div class="content">
 			<br>
-				${title }<br>
+				${title }<br><!--插入jsp文件片段  -->
 			<jsp:doBody />
 		</div>
 		<div class="footer">
 			版权归石大仙联合出版社所有
 		</div>
-	
+		<jsp:invoke fragment="js"/><!--插入js片段  -->
 	</body>
 
 </html>
