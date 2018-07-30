@@ -69,4 +69,12 @@ public class OrdersController {//订单控制类
 		
 		return "redirect:/";
 	}
+	@RequestMapping(method=RequestMethod.GET,value="/uc/Orders/details")
+	public String dateils(@AuthenticationPrincipal(expression = "users.id") Integer usersId,
+							Model model) {
+		List<Orders> orders=ordersService.findALl(usersId);
+		System.out.println(orders);
+		model.addAttribute("orders", orders);
+		return "Orders-details";
+	}
 }

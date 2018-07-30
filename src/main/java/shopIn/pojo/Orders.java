@@ -1,15 +1,18 @@
 package shopIn.pojo;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.xml.crypto.Data;
+
+
+import shopIn.pojo.Item.OrdersItem;
 
 public class Orders {//订单表
 	private Integer id;
     private Integer userId ;//当前用户id
     private Address address;//对一的收货地址表
     private Date createtime;//订单形成的时间
-    
+    private List<OrdersItem> ordersitem;
     
 	public Integer getId() {
 		return id;
@@ -34,6 +37,12 @@ public class Orders {//订单表
 	}
 	public void setCreatetime(Date createtime) {
 		this.createtime = createtime;
+	}
+	public List<OrdersItem> getOrdersitem() {
+		return ordersitem;
+	}
+	public void setOrdersitem(List<OrdersItem> ordersitem) {
+		this.ordersitem = ordersitem;
 	}
     
     

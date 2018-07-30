@@ -1,6 +1,7 @@
 package shopIn.sevice.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.crypto.Data;
 
@@ -54,6 +55,13 @@ public class OrdersImpl implements OrdersService {
 		
 		cartsService.delete(usersId);
 		return orders;
+	}
+
+
+	@Override
+	public List<Orders> findALl(Integer usersId) {
+		
+		return ordersMapper.findALl(usersId);
 	}
 
 }

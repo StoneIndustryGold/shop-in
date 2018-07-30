@@ -10,4 +10,50 @@
   	<insert id="addItem"><!-- 添加到订单项的订单id和 商品id数量 -->
   		insert into OrdersItem (order_id,cellpone_id,ampout) values(#{ordersId},#{cellpones.id},#{ampout})
   	</insert>
+  	<select id="findALl" resultMap="ordersFindALl">
+		select 
+		          o.id Orders_id, o.createtime Orders_createtime,
+		          c.user_id userId, c.cellpone_id  cellponeId,c.count carts_count,
+		           a.id Address_id, a.consigneename Address_consigneename,a.phone Address_phone, a.detailsaddress Address_detailsaddress,
+		          cs.id cellpones_id,cs.brand cellpones_brand, cs.model cellpones_model,cs.price cellpones_price,
+		          om.ampout OrdersItem_ampout
+		from orders o--订单
+		     inner join users u on u.id=o.user_id 
+		      inner join Address a on a.user_id=u.id
+		     inner join  carts c on c.user_id=u.id       
+		     inner join cellpones cs on  cs.id=c.cellpone_id
+		     inner join OrdersItem om on om.order_id=o.id and om.cellpone_id=cs.id
+		where o.id=41 and o.user_id=#{usersId} 
+ 
+  	</select>
+  	<resultMap type="Orders" id="ordersFindALl">
+  		<id column="Orders_id" property="id"/>
+  		<result column="Orders_createtime" property="createtime"/>
+  		<association property="address" javaType="Address">
+  			<id   column="Address_id" property="id"/>
+  			<result column="Address_consigneename" property="consigneeName"/>
+  			<result  column="Address_detailsaddress" property="detailsAddress"/>  			
+  		</association>
+  		
+  		<collection property="ordersitem" ofType="OrdersItem">
+  			<id column="userId"/>
+  			<id column="cellponeId"/>
+			<result column="carts_count" property="ampout"/>
+			
+			<association property="cellpones" javaType="Cellpones">
+				<id column="cellpones_id" property="id"/>
+				<result column="cellpones_brand" property="brand"/>
+				<result column="cellpones_model" property="model"/>
+				<result column="cellpones_price" property="price"/>
+			</association>
+  		</collection>
+  		
+  	</resultMap>
   </mapper>
+  
+  
+  
+  
+  
+  
+  

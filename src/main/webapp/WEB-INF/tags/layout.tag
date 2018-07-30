@@ -21,7 +21,8 @@
 				<li><a href="${contextPath }/uc/carts/details">购物详情</a></li>
 				<li><a href="${contextPath }/">手机商城</a></li>
 				<li><a href="${contextPath }/uc/address/add">添加地址</a> </li>			
-				<li><a href="${contextPath }/uc/address/list">地址详情</a> </li>			
+				<li><a href="${contextPath }/uc/address/list">地址详情</a> </li>	
+				<li><a href="${contextPath }/uc/Orders/details">订单详情</a></li>		
 			</ul>
 		
 			<!--手动创建的页面  -->
