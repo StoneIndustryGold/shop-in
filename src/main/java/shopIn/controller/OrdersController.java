@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -69,12 +70,20 @@ public class OrdersController {//订单控制类
 		
 		return "redirect:/";
 	}
-	@RequestMapping(method=RequestMethod.GET,value="/uc/Orders/details")
-	public String dateils(@AuthenticationPrincipal(expression = "users.id") Integer usersId,
+	//订单集合页面
+	@RequestMapping(method=RequestMethod.GET,value="/uc/Orders/list")
+	public String list(@AuthenticationPrincipal(expression = "users.id") Integer usersId,
 							Model model) {
 		List<Orders> orders=ordersService.findALl(usersId);
 		System.out.println(orders);
 		model.addAttribute("orders", orders);
+		return "Orders-list";
+	}
+	
+	@RequestMapping(method=RequestMethod.GET,value="/uc/Orders/details/{id}")
+	public String details(@PathVariable int id) {
+		System.out.println(id);
 		return "Orders-details";
 	}
+	
 }
