@@ -17,13 +17,13 @@
 		           a.id Address_id, a.consigneename Address_consigneename,a.phone Address_phone, a.detailsaddress Address_detailsaddress,
 		          cs.id cellpones_id,cs.brand cellpones_brand, cs.model cellpones_model,cs.price cellpones_price,
 		          om.ampout OrdersItem_ampout
-		from orders o--订单
+		from orders o
 		     inner join users u on u.id=o.user_id 
 		      inner join Address a on a.user_id=u.id
 		     inner join  carts c on c.user_id=u.id       
 		     inner join cellpones cs on  cs.id=c.cellpone_id
 		     inner join OrdersItem om on om.order_id=o.id and om.cellpone_id=cs.id
-		where o.id=41 and o.user_id=#{usersId} 
+		where  o.user_id=#{usersId} 
  
   	</select>
   	<resultMap type="Orders" id="ordersFindALl">
