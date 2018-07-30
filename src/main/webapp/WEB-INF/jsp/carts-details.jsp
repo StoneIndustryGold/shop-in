@@ -10,6 +10,11 @@
 	<jsp:attribute name="css">
 		<link href="${contextPath}/assets/css/form.css" rel="stylesheet">
 	</jsp:attribute>
+	
+	<jsp:attribute name="js">
+    <script src="${contextPath}/assets/vendor/jquery-3.3.1.min.js"></script>
+    <script src="${contextPath}/assets/js/shopping-cart.js"></script>
+  </jsp:attribute>
 	<jsp:body>
 	<h5>购物车详情</h5>
 	

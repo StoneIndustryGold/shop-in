@@ -87,10 +87,7 @@ public class OrdersController {//订单控制类
 						  Model model) {
 		System.out.println(id);
 		Orders orders=ordersService.findOne(id,usersId);
-		model.addAttribute("orders", orders);
-		
-		List<Address>  addres=addressService.finAll(usersId);
-		model.addAttribute("addres", addres);
+		model.addAttribute("orders", orders);		
 		return "Orders-details";
 	}
 	
