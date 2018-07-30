@@ -64,4 +64,11 @@ public class OrdersImpl implements OrdersService {
 		return ordersMapper.findALl(usersId);
 	}
 
+
+	@Override
+	public Orders findOne(int id, Integer usersId) {
+		
+		return ordersMapper.findOne(id, usersId);
+	}
+
 }

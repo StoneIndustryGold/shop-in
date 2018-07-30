@@ -75,14 +75,22 @@ public class OrdersController {//订单控制类
 	public String list(@AuthenticationPrincipal(expression = "users.id") Integer usersId,
 							Model model) {
 		List<Orders> orders=ordersService.findALl(usersId);
-		System.out.println(orders);
+	
 		model.addAttribute("orders", orders);
 		return "Orders-list";
 	}
 	
 	@RequestMapping(method=RequestMethod.GET,value="/uc/Orders/details/{id}")
-	public String details(@PathVariable int id) {
+	public String details(@AuthenticationPrincipal(expression = "users.id") Integer usersId,
+						  @PathVariable int id,
+						  @ModelAttribute OrdersForm ordersForm,
+						  Model model) {
 		System.out.println(id);
+		Orders order=ordersService.findOne(id,usersId);
+		model.addAttribute("order", order);
+		
+		List<Address>  addres=addressService.finAll(usersId);
+		model.addAttribute("addres", addres);
 		return "Orders-details";
 	}
 	

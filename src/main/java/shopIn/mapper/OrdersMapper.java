@@ -4,6 +4,8 @@ package shopIn.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import shopIn.pojo.Orders;
 import shopIn.pojo.Item.OrdersItem;
 
@@ -14,4 +16,7 @@ public interface OrdersMapper {
 	void addItem(OrdersItem ordersItem);
 	
 	List<Orders> findALl(Integer usersId);
+	
+	Orders findOne(@Param("id")int id,
+				   @Param("usersId") Integer usersId);
 }

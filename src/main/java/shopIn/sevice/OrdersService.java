@@ -10,4 +10,6 @@ public interface OrdersService {
 
 	List<Orders> findALl(Integer usersId);
 
+	Orders findOne(int id, Integer usersId);
+
 }
