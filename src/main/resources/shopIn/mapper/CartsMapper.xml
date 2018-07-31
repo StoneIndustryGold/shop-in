@@ -33,6 +33,11 @@
   		 		update carts set count=count-#{amount}
 		where user_id=#{usersId} and cellpone_id=#{cellponesId}
   	</delete>
+  	<update id="updateItemAmount">
+	    update carts
+	    set carts= #{amount} 
+	    where USER_ID = #{userId} and CELLPHONE_ID = #{cellponesId}    
+  	</update>
   	<delete id="delete">
   		delete from carts  where  user_id=#{usersId} 
   	</delete>

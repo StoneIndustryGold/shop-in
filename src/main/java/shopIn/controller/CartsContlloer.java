@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import shopIn.pojo.Cart;
 import shopIn.pojo.Item.CartItem;
@@ -68,4 +69,13 @@ public class CartsContlloer {
 		model.addAttribute("cartsItem", carts);
 		return "carts-details";
 	}
+	@RequestMapping(method = RequestMethod.POST, value = "/uc/shopping-cart/update-item-amount")
+    @ResponseBody // 把返回值作为响应内容，加了jackson库之后，会转换为json文本
+    public Cart updateItemAmount(@AuthenticationPrincipal(expression = "users.id") Integer userId,
+                                         @RequestParam Integer cellponesId,
+                                         @RequestParam Integer amount) {
+		cartsService.updateItemAmount(userId, cellponesId, amount);
+        return cartsService.fondOneByUserID(userId);
+    }
+	
 }

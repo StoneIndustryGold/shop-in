@@ -23,6 +23,12 @@ public interface CartsService {
 
 	void delete(Integer usersId);
 
+	void updateItemAmount(Integer userId, Integer cellponesId, Integer amount);
+
+	
+
+
+
 	
 
 }

@@ -77,4 +77,15 @@ public class CartsIml implements CartsService {
 		
 	}
 
+	@Override
+	public void updateItemAmount(Integer userId, Integer cellponesId, Integer amount) {		  
+		        if (amount <= 0) {
+		            throw new IllegalArgumentException("购物车项的数量必须大于0");
+		        }
+		        cartsMapper.updateItemAmount(userId, cellponesId, amount);
+		
+		
+	}
+
+
 }

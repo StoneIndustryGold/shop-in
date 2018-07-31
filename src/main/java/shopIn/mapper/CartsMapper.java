@@ -37,4 +37,8 @@ public interface CartsMapper {
 					@Param("amount")int amount);
 	
 	void delete(Integer usersId);
+
+	void updateItemAmount(@Param("userId")Integer userId,
+					@Param("cellponesId")Integer cellponesId,
+					@Param("amount")	Integer amount);
 }

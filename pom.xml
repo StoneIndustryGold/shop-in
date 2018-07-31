@@ -98,6 +98,17 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.0.10.Final</version>
 		</dependency>
+		
+		<dependency><!-- ajax数据转换到控制层，转换数据用的 -->
+	      <groupId>com.fasterxml.jackson.core</groupId>
+	      <artifactId>jackson-annotations</artifactId>
+	      <version>2.9.5</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>com.fasterxml.jackson.core</groupId>
+	      <artifactId>jackson-databind</artifactId>
+	      <version>2.9.5</version>
+	    </dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>

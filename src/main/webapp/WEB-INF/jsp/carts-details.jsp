@@ -13,7 +13,7 @@
 	
 	<jsp:attribute name="js">
     <script src="${contextPath}/assets/vendor/jquery-3.3.1.min.js"></script>
-    <script src="${contextPath}/assets/js/shopping-cart.js"></script>
+    <script src="${contextPath}/assets/js/shopping-cart.js"></script><!-- ajax导入 -->
   </jsp:attribute>
 	<jsp:body>
 	<h5>购物车详情</h5>
@@ -38,13 +38,11 @@
 								<button type="submit"><h3>+</h3></button>
 							</form>	
 							<li>${item.count }</li>		
-						<li>		
-							<form action="${contextPath }/uc/carts/uptedaCarts" method="post">
-								<sec:csrfInput/>
-								<input type="hidden" name="cellponesId" value="${item.cellpones.id }">
-								<button type="submit"><h1>-</h1></button>
-							</form>				
-						</li>
+							<li>		
+								  <input type="number" min="1" value="${item.count}" 
+		                       class="item-amount" 
+		                       data-cellphone-id="${item.cellpones.id}">  
+             				</li>
 						
 						
 								
