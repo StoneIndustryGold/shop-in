@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	详情页面
-				${orders.id }
+	详情页面<br>
+				订单状态：${orders.stateText() }<br>
 				${orders.createtime }<br>
 	<table>
 		<tr><th>商品</th><th>单价</th><th>数量</th></tr>

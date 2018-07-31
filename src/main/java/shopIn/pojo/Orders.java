@@ -52,5 +52,28 @@ public class Orders {//订单表
 		this.ordersitem = ordersitem;
 	}
     
-    
+	public String stateText() {
+        switch (state) {
+        case Created:
+            return "待支付";
+            
+        case Paid:
+            return "待发货";
+            
+        case Shipped:
+            return "已发货";
+            
+        case Delivered:
+            return "已送达";
+            
+        case Commented:
+            return "已评论";
+            
+        case Canceled:
+            return "已取消";
+
+        default:
+            return "?" + state;
+        }
+    }
 }

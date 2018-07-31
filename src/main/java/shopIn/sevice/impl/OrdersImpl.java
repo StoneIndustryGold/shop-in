@@ -40,7 +40,7 @@ public class OrdersImpl implements OrdersService {
 		address.setId(addressId);//把地址id设置给它
 		orders.setAddress(address);//在社往订单--订单拿到了--usersId和adderssId
 		orders.setCreatetime(new Date());//往里面设置时间
-		orders.setState(OrderState.Canceled);
+		orders.setState(OrderState.Created);
 		
 		ordersMapper.create(orders);
 		//创建订单项表
