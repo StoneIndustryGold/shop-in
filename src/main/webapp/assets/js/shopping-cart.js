@@ -7,7 +7,7 @@ $('.item-amount').change(function() {
     var csrfParamValue = $('meta[name="_csrf"]').attr('content');
     
     var data = {
-    	cellponesId: $(this).data('cellphone-id'),
+    	cellponesId: $(this).data('cellpones-id'),
         amount: $(this).val()
     };
     data[csrfParamName] = csrfParamValue;

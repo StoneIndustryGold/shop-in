@@ -37,11 +37,12 @@
 								<input type="hidden" name="cellponesId" value="${item.cellpones.id }">
 								<button type="submit"><h3>+</h3></button>
 							</form>	
+						
 							<li>${item.count }</li>		
 							<li>		
 								  <input type="number" min="1" value="${item.count}" 
 		                       class="item-amount" 
-		                       data-cellphone-id="${item.cellpones.id}">  
+		                       data-cellpones-id="${item.cellpones.id}">  
              				</li>
 						
 						
