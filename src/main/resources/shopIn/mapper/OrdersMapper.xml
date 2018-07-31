@@ -59,7 +59,7 @@
 			      inner join Address a on a.user_id=u.id 
 			      inner join OrdersItem om on om.order_id=o.id    
 			      inner join cellpones cs on  cs.id=om.cellpone_id
-			where o.user_id=#{usersId}  and o.addres_id=#{id}
+			where o.user_id=#{usersId}  and o.id=#{id}
   	</select>
   </mapper>
   

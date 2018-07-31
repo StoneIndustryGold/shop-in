@@ -68,7 +68,7 @@ public class OrdersImpl implements OrdersService {
 
 	@Override
 	public Orders findOne(int id, Integer usersId) {
-		
+		System.out.println("当前："+id);
 		return ordersMapper.findOne(id, usersId);
 	}
 
