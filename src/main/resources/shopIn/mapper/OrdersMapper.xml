@@ -18,11 +18,11 @@
 		          cs.id cellpones_id,cs.brand cellpones_brand, cs.model cellpones_model,cs.price cellpones_price,
 		          om.ampout OrdersItem_ampout
 		from orders o
-		     inner join users u on u.id=o.user_id 
-		      inner join Address a on a.user_id=u.id
-		     inner join  carts c on c.user_id=u.id       
-		     inner join cellpones cs on  cs.id=c.cellpone_id
-		     inner join OrdersItem om on om.order_id=o.id and om.cellpone_id=cs.id
+		     left join users u on u.id=o.user_id 
+		      left join Address a on a.user_id=u.id
+		     left join  carts c on c.user_id=u.id       
+		     left join cellpones cs on  cs.id=c.cellpone_id
+		     left join OrdersItem om on om.order_id=o.id and om.cellpone_id=cs.id
 		where  o.user_id=#{usersId} 
  
   	</select>
@@ -56,11 +56,11 @@
 		          cs.id cellpones_id,cs.brand cellpones_brand, cs.model cellpones_model,cs.price cellpones_price,
 		          om.ampout OrdersItem_ampout
 		from orders o
-		     inner join users u on u.id=o.user_id 
-		      inner join Address a on a.user_id=u.id
-		     inner join  carts c on c.user_id=u.id       
-		     inner join cellpones cs on  cs.id=c.cellpone_id
-		     inner join OrdersItem om on om.order_id=o.id and om.cellpone_id=cs.id
+		     left join users u on u.id=o.user_id 
+		      left join Address a on a.user_id=u.id
+		     left join  carts c on c.user_id=u.id       
+		     left join cellpones cs on  cs.id=c.cellpone_id
+		     left join OrdersItem om on om.order_id=o.id and om.cellpone_id=cs.id
 		where  o.id=#{id} and  o.user_id=#{usersId} 
   	</select>
   </mapper>

@@ -68,7 +68,7 @@ public class OrdersController {//订单控制类
 		System.out.println("了空间啊："+ordersForm.getAddressId());
 		Orders orders=ordersService.create(usersId,ordersForm.getAddressId());
 		
-		return "redirect:/";
+		return "redirect:/uc/Orders/list";
 	}
 	//订单集合页面
 	@RequestMapping(method=RequestMethod.GET,value="/uc/Orders/list")
@@ -79,7 +79,7 @@ public class OrdersController {//订单控制类
 		model.addAttribute("orders", orders);
 		return "Orders-list";
 	}
-	
+	//订单详情页
 	@RequestMapping(method=RequestMethod.GET,value="/uc/Orders/details/{id}")
 	public String details(@AuthenticationPrincipal(expression = "users.id") Integer usersId,
 						  @PathVariable int id,
