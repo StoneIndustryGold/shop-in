@@ -8,13 +8,13 @@
   		 select count(*) from carts where user_id=#{usersId} and cellpone_id=#{cellponesId}
   	</select>
   	
-  	<update id="incItemAmount"><!-- 更新方法 -->
-  		update carts set count=count+#{amount}
+  	<update id="incItemCount"><!-- 更新方法 -->
+  		update carts set count=count+#{count}
 		where user_id=#{usersId} and cellpone_id=#{cellponesId}
   	</update>
   	
   	<insert id="createItem"><!-- 插入方法 -->
-  		insert into carts values(#{usersId},#{cellponesId},#{amount})
+  		insert into carts values(#{usersId},#{cellponesId},#{count})
   	</insert>
   	
   	
@@ -30,12 +30,12 @@
 			select count from carts where  cellpone_id=#{cellponesId}  and user_id=#{usersId}
 	</select>
   	<delete id="minusCarts">
-  		 		update carts set count=count-#{amount}
+  		 		update carts set count=count-#{count}
 		where user_id=#{usersId} and cellpone_id=#{cellponesId}
   	</delete>
-  	<update id="updateItemAmount">
+  	<update id="updateItemCount">
 	    update carts
-	    set carts= #{amount} 
+	    set count= #{count} 
 	    where USER_ID = #{userId} and CELLPHONE_ID = #{cellponesId}    
   	</update>
   	<delete id="delete">

@@ -21,12 +21,12 @@ public class CartsIml implements CartsService {
 	}
 
 	@Override
-	public void addToCart(Integer usersId, Integer cellponesId, int amount) {
+	public void addToCart(Integer usersId, Integer cellponesId, int count) {
 			
 		if (cartsMapper.itemExists(usersId,cellponesId)) {//若购物车中已有该商品,先查找
-			cartsMapper.incItemAmount(usersId,cellponesId,amount);//则数量+1
+			cartsMapper.incItemCount(usersId,cellponesId,count);//则数量+1
 		}else {//否则
-			cartsMapper.createItem(usersId,cellponesId,amount);//添加一个新的购物车项
+			cartsMapper.createItem(usersId,cellponesId,count);//添加一个新的购物车项
 		}
 		
 	}
@@ -61,7 +61,7 @@ public class CartsIml implements CartsService {
 	@Override
 	public void uptedaCartsAdd(Integer usersId, Integer cellponesId, int amount) {
 	
-			cartsMapper.incItemAmount(usersId, cellponesId, amount);//调用添加方法进行 加1		
+			cartsMapper.incItemCount(usersId, cellponesId, amount);//调用添加方法进行 加1		
 	
 	}
 
@@ -78,11 +78,11 @@ public class CartsIml implements CartsService {
 	}
 
 	@Override
-	public void updateItemAmount(Integer userId, Integer cellponesId, Integer amount) {		  
+	public void updateItemCount(Integer userId, Integer cellponesId, Integer amount) {		  
 		        if (amount <= 0) {
 		            throw new IllegalArgumentException("购物车项的数量必须大于0");
 		        }
-		        cartsMapper.updateItemAmount(userId, cellponesId, amount);
+		        cartsMapper.updateItemCount(userId, cellponesId, amount);
 		
 		
 	}

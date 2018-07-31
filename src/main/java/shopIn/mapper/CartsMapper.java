@@ -13,13 +13,13 @@ public interface CartsMapper {
 	boolean itemExists(@Param("usersId")Integer usersId,//查找方法
 			        	@Param("cellponesId")Integer cellponesId);
 
-	void incItemAmount(@Param("usersId")Integer usersId, //跟新
+	void incItemCount(@Param("usersId")Integer usersId, //跟新
 						@Param("cellponesId")Integer cellponesId,
-						@Param("amount")int amount);
+						@Param("count")int count);
 
 	void createItem(@Param("usersId")Integer usersId,//添加方法
 					@Param("cellponesId")Integer cellponesId,
-					@Param("amount")int amount);
+					@Param("count")int count);
 	
 	List<CartItem> finCartsItems(@Param("usersId")Integer usersId);
 	
@@ -30,15 +30,15 @@ public interface CartsMapper {
 
 	Integer finCarts(@Param("usersId")Integer usersId,
 					@Param("cellponesId")Integer cellponesId, 
-					@Param("amount")int amount);
+					@Param("count")int count);
 
 	void minusCarts(@Param("usersId")Integer usersId,
 					@Param("cellponesId")Integer cellponesId,
-					@Param("amount")int amount);
+					@Param("count")int count);
 	
 	void delete(Integer usersId);
 
-	void updateItemAmount(@Param("userId")Integer userId,
+	void updateItemCount(@Param("userId")Integer userId,
 					@Param("cellponesId")Integer cellponesId,
-					@Param("amount")	Integer amount);
+					@Param("count")	Integer count);
 }

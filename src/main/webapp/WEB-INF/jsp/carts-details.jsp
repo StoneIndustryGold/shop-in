@@ -39,9 +39,10 @@
 							</form>	
 						
 							<li>${item.count }</li>		
-							<li>		
-								  <input type="number" min="1" value="${item.count}" 
-		                       class="item-amount" 
+							<li>
+								<sec:csrfInput />		
+								<input type="number" min="1" value="${item.count}" 
+		                       class="item-count" 
 		                       data-cellpones-id="${item.cellpones.id}">  
              				</li>
 						
