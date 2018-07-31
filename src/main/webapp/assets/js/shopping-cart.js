@@ -8,7 +8,7 @@ $('.item-count').change(function() {
     
     var data = {
     	cellponesId: $(this).data('cellpones-id'),
-        amount: $(this).val()
+    	count: $(this).val()
     };
     data[csrfParamName] = csrfParamValue;
     

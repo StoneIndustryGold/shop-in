@@ -9,6 +9,7 @@
 <t:layout title="购物车详情">
 	<jsp:attribute name="css">
 		<link href="${contextPath}/assets/css/form.css" rel="stylesheet">
+		<sec:csrfMetaTags/>
 	</jsp:attribute>
 	
 	<jsp:attribute name="js">

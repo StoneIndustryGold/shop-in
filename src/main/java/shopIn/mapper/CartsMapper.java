@@ -39,6 +39,6 @@ public interface CartsMapper {
 	void delete(Integer usersId);
 
 	void updateItemCount(@Param("userId")Integer userId,
-					@Param("cellponesId")Integer cellponesId,
-					@Param("count")	Integer count);
+						@Param("cellponesId")Integer cellponesId,
+						@Param("count")	Integer count);
 }
