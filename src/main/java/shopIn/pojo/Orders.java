@@ -3,8 +3,7 @@ package shopIn.pojo;
 import java.util.Date;
 import java.util.List;
 
-
-
+import shopIn.OrderState;
 import shopIn.pojo.Item.OrdersItem;
 
 public class Orders {//订单表
@@ -12,6 +11,7 @@ public class Orders {//订单表
     private Integer userId ;//当前用户id
     private Address address;//对一的收货地址表
     private Date createtime;//订单形成的时间
+    private OrderState state;//每局类型的状态
     private List<OrdersItem> ordersitem;
     
 	public Integer getId() {
@@ -34,6 +34,13 @@ public class Orders {//订单表
 	}
 	public Date getCreatetime() {
 		return createtime;
+	}
+	
+	public OrderState getState() {
+		return state;
+	}
+	public void setState(OrderState state) {
+		this.state = state;
 	}
 	public void setCreatetime(Date createtime) {
 		this.createtime = createtime;

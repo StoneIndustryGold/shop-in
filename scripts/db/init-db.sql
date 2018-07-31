@@ -99,6 +99,7 @@ create table carts(
         id integer primary key,
         user_id integer not null,--外键用户id
         Addres_id integer not null,--外键地址id
+        "state" varchar(64),
         createtime timestamp,--创建的时间  
         constraint Orders_Fk_user_id_users foreign key(user_id) references users(id),
         constraint Orders_FK_Addres_id_Address foreign key(Addres_id)references Address(id) 

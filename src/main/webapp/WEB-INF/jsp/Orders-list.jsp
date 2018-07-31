@@ -21,6 +21,8 @@
 		<tr><th>商品</th><th>单价</th><th>数量</th></tr>
 			<c:forEach items="${orders}" var="order">
 		订单创建时间：<fmt:formatDate value="${order.createtime }" pattern="yyyy-MM-dd HH:mm:ss"/><br>
+					${order.state}
+					
 				<c:forEach items="${order.ordersitem }" var="item">
 					${item.ampout}
 				id#	${order.id}

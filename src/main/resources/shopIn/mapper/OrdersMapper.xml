@@ -5,30 +5,30 @@
   <mapper namespace="shopIn.mapper.OrdersMapper">
   
   	<insert id="create" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
-  		insert into Orders values (Orders_seq.nextval,#{userId},#{address.id},#{createtime}) 
+  		insert into Orders values (Orders_seq.nextval,#{userId},#{address.id},#{createtime},#{state}) 
   	</insert>
   	<insert id="addItem"><!-- 添加到订单项的订单id和 商品id数量 -->
   		insert into OrdersItem (order_id,cellpone_id,ampout) values(#{ordersId},#{cellpones.id},#{ampout})
   	</insert>
   	<select id="findALl" resultMap="ordersFindALl">
 		select 
-		          o.id Orders_id, o.createtime Orders_createtime,
-		          c.user_id userId, c.cellpone_id  cellponeId,c.count carts_count,
-		           a.id Address_id, a.consigneename Address_consigneename,a.phone Address_phone, a.detailsaddress Address_detailsaddress,
-		          cs.id cellpones_id,cs.brand cellpones_brand, cs.model cellpones_model,cs.price cellpones_price,
-		          om.ampout OrdersItem_ampout
+		      o.id Orders_id, o.createtime Orders_createtime,o."state" Orders_state,
+		      a.id Address_id, a.consigneename Address_consigneename,a.phone Address_phone, a.detailsaddress Address_detailsaddress,
+		      om.order_id orderId, om.cellpone_id cellpuneId,om.ampout OrdersItem_ampout,
+		      cs.id cellpones_id,cs.brand cellpones_brand, cs.model cellpones_model,cs.os cellpones_os,cs.price cellpones_price		         		         
 		from orders o
-		     left join users u on u.id=o.user_id 
-		      left join Address a on a.user_id=u.id
-		     left join  carts c on c.user_id=u.id       
-		     left join cellpones cs on  cs.id=c.cellpone_id
-		     left join OrdersItem om on om.order_id=o.id and om.cellpone_id=cs.id
-		where  o.user_id=#{usersId} 
+		      inner join users u on u.id=o.user_id 
+		      inner join Address a on a.user_id=u.id
+		      inner join OrdersItem om on om.order_id=o.id     
+		      inner join cellpones cs on  cs.id=om.cellpone_id
+		where o.user_id=#{usersId}
  
   	</select>
   	<resultMap type="Orders" id="ordersFindALl">
-  		<id column="Orders_id" property="id"/>
+  		<id column="Orders_id" property="id"/>	
   		<result column="Orders_createtime" property="createtime"/>
+  		<result column="Orders_state" property="state"/>
+  		
   		<association property="address" javaType="Address">
   			<id   column="Address_id" property="id"/>
   			<result column="Address_consigneename" property="consigneeName"/>
@@ -36,9 +36,9 @@
   		</association>
   		
   		<collection property="ordersitem" ofType="OrdersItem">
-  			<id column="userId"/>
-  			<id column="cellponeId"/>
-			<result column="carts_count" property="ampout"/>
+  			<id column="orderId"/>
+  			<id column="cellpuneId"/>
+			<result column="OrdersItem_ampout" property="ampout"/>
 			
 			<association property="cellpones" javaType="Cellpones">
 				<id column="cellpones_id" property="id"/>
@@ -49,19 +49,17 @@
   		</collection>  		
   	</resultMap>
   	<select id="findOne" resultMap="ordersFindALl">
-  		select 
-		          o.id Orders_id, o.createtime Orders_createtime,
-		          c.user_id userId, c.cellpone_id  cellponeId,c.count carts_count,
-		           a.id Address_id, a.consigneename Address_consigneename,a.phone Address_phone, a.detailsaddress Address_detailsaddress,
-		          cs.id cellpones_id,cs.brand cellpones_brand, cs.model cellpones_model,cs.price cellpones_price,
-		          om.ampout OrdersItem_ampout
-		from orders o
-		     left join users u on u.id=o.user_id 
-		      left join Address a on a.user_id=u.id
-		     left join  carts c on c.user_id=u.id       
-		     left join cellpones cs on  cs.id=c.cellpone_id
-		     left join OrdersItem om on om.order_id=o.id and om.cellpone_id=cs.id
-		where  o.id=#{id} and  o.user_id=#{usersId} 
+			select 
+			      o.id Orders_id, o.createtime Orders_createtime,o."state" Orders_state,
+			      a.id Address_id, a.consigneename Address_consigneename,a.phone Address_phone, a.detailsaddress Address_detailsaddress,
+			      om.order_id orderId, om.cellpone_id cellpuneId,om.ampout OrdersItem_ampout,
+			      cs.id cellpones_id,cs.brand cellpones_brand, cs.model cellpones_model,cs.os cellpones_os,cs.price cellpones_price			          
+			from orders o
+			      inner join users u on u.id=o.user_id 
+			      inner join Address a on a.user_id=u.id 
+			      inner join OrdersItem om on om.order_id=o.id    
+			      inner join cellpones cs on  cs.id=om.cellpone_id
+			where o.user_id=#{usersId}  and o.addres_id=#{id}
   	</select>
   </mapper>
   
