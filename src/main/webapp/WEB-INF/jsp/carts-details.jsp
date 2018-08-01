@@ -53,7 +53,7 @@
 				</ul>
 			</div>
 			<div>
-				<div>总价：${cartsItem.totalCost() /100}元，数据库是分</div>
+				<div>总价：<span id="totalCost">${cartsItem.totalCost() /100}元，数据库是分</span></div>
 				<a href="${contextPath }/uc/Orders/add">马上交钱</a>
 			</div>	
 		</c:if>	

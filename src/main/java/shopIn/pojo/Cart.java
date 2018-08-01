@@ -2,6 +2,8 @@ package shopIn.pojo;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import shopIn.pojo.Item.CartItem;
 
 public class Cart {//这是购物车项
@@ -14,6 +16,7 @@ public class Cart {//这是购物车项
 		public List<CartItem> getItems() {
 			return items;
 		}
+	@JsonProperty("totalCost")
 	public int totalCost() {
 		int result=0;
 		for(CartItem c:items) {
