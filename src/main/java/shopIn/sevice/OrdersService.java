@@ -12,4 +12,6 @@ public interface OrdersService {
 
 	Orders findOne(int id, Integer usersId);
 
+	String payForm(Integer usersId, Integer id);
+
 }

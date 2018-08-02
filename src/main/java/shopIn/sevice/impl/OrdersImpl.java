@@ -1,5 +1,6 @@
 package shopIn.sevice.impl;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +9,10 @@ import javax.xml.crypto.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.request.AlipayTradePagePayRequest;
 
 import shopIn.OrderState;
 import shopIn.mapper.OrdersMapper;
@@ -22,11 +27,12 @@ import shopIn.sevice.OrdersService;
 @Transactional
 public class OrdersImpl implements OrdersService {
 	private OrdersMapper  ordersMapper;
-	
+	private AlipayClient alipayClient;//依赖了支付宝接口第三方的
 	private CartsService cartsService;
 	@Autowired
-	public OrdersImpl(OrdersMapper ordersMapper, CartsService cartsService) {
+	public OrdersImpl(OrdersMapper ordersMapper, AlipayClient alipayClient, CartsService cartsService) {
 		this.ordersMapper = ordersMapper;
+		this.alipayClient = alipayClient;
 		this.cartsService = cartsService;
 	}
 
@@ -70,6 +76,36 @@ public class OrdersImpl implements OrdersService {
 	public Orders findOne(int id, Integer usersId) {
 		System.out.println("当前："+id);
 		return ordersMapper.findOne(id, usersId);
+	}
+
+
+	@Override
+	public String payForm(Integer usersId, Integer id) {
+		Orders orders=findOne(id, usersId);
+		
+		if(orders.getState() !=OrderState.Created) {//盘对从数据库里查的值不等于枚举的值
+				throw new IllegalAccessError("只有Created状态的订单才能发起支付");
+		}
+		BigDecimal totalAmount=BigDecimal.valueOf(orders.totalCost()).divide(BigDecimal.valueOf(100));
+		AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest(); // 即将发送给支付宝的请求（电脑
+		alipayRequest.setReturnUrl("http://shop.me/shop-in/uc/orders/sync-pay-cb"); // 浏览器端完成支付后跳转回商户的地
+		alipayRequest.setNotifyUrl("http://shop.me/shop-in/async-pay-cb");// 支付宝服务端确认支付成功后通知商户的地址（异步通知,需要上线才能做
+		alipayRequest.setBizContent("{"+
+				"	\"out_trade_no\":\"" + id.toString() + "-" + new Date().getTime() + "\"," + // 商户订单号，加时间戳是为了避免测试时订单号重复
+				"   \"product_code\":\"FAST_INSTANT_TRADE_PAY\"," + //产品码，固定
+				"   \"total_amount\":" + totalAmount.toString() + "," + //订单总金额
+				"   \"subject\":\"shop手机商城订单支付\"," +//订单标题
+				"    \"body\":\"TODO 显示订单项概要\"" + // 订单描述
+				
+				"}");
+		try {
+			return alipayClient.pageExecute(alipayRequest).getBody();
+		} catch (AlipayApiException e) {
+			
+			throw new RuntimeException(e);
+		}
+		
+		
 	}
 
 }
