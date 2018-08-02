@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
      <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,24 +25,11 @@
 				</c:forEach>				
 			</tr>	
 	</table>
-	<%-- 
-	<c:forEach items="${addres }" var="addre">
-		#${addre.id }
-	</c:forEach>
-	 <form:form action="" method="post" commandName="ordersForm"><!-- 不写form表单的话就调用实体 -->
-		<div>
-			<label for="AddressId"></label>
-			<form:select path="AddressId" ><!--orders表单下的address收货的址对一关系  -->
-				
-				
-				<form:options items="${addres}" 
-							  itemLabel="detailsAddress"
-							  itemValue="detailsAddress"/><!-- 传出去的 是id -->
-				
-			</form:select>
-			<form:errors path="AddressId" cssClass="field-error" ></form:errors>
-		</div>
-		<button type="submit">修改</button>
-		</form:form> --%>
+	<div>
+		<form action="${contextPath }/uc/Orders/${orders.id}/pay" method="post">
+			<sec:csrfInput/>
+			<button type="submit">支付宝付款</button>
+		</form>
+	</div>
 </body>
 </html>

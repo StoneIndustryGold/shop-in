@@ -51,6 +51,13 @@ public class Orders {//订单表
 	public void setOrdersitem(List<OrdersItem> ordersitem) {
 		this.ordersitem = ordersitem;
 	}
+    public Integer totalCost() {//方法名
+    	Integer result = 0;//容器
+        for (OrdersItem item : ordersitem) {//遍历订单项
+            result += item.getCellpones().getPrice()*item.getAmpout();//得到订单项里的数据
+        }
+        return result;//返回
+    }
     
 	public String stateText() {
         switch (state) {

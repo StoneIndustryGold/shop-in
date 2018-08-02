@@ -125,5 +125,17 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.3</version>
 		</dependency>
+		
+		<dependency><!--获得支付宝，支付支持  -->
+	      <groupId>com.alipay.sdk</groupId>
+	      <artifactId>alipay-sdk-java</artifactId>
+	      <version>3.3.4.ALL</version>
+	    </dependency>
+	
+	    <dependency>
+	      <groupId>commons-io</groupId>
+	      <artifactId>commons-io</artifactId>
+	      <version>2.6</version>
+	    </dependency>
 	</dependencies>
 </project>
