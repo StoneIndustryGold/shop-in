@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.sql.DataSource;
 
 import org.apache.commons.io.FileUtils;
+import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +33,7 @@ import com.alipay.api.DefaultAlipayClient;
 @ComponentScan(basePackages="shopIn")//ɨ�趥���
 @EnableWebMvc //����web mvc������ʩ֧��
 @MapperScan("shopIn.mapper")
-@PropertySource("classpath:jdbc.properties")
+@PropertySource({"classpath:jdbc.properties","classpath:alipay.properties"})
 @EnableTransactionManagement // ����spring����֧��
 public class AppConfig extends WebMvcConfigurerAdapter{
 	@Override//重写    
@@ -76,14 +77,14 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 		}
 	   
 		@Bean
-	    public AlipayClient alipayClient() throws IOException {
+	    public AlipayClient alipayClient(Environment env) throws IOException {
 	        return new DefaultAlipayClient(
 	                "https://openapi.alipay.com/gateway.do",
-	                "2018052360246120",//获得秘钥，路径
-	                FileUtils.readFileToString(new File("D:/shiqinjin/alipay/app-private-key.txt"), "UTF-8"),
+	                env.getProperty("alipay.appId"),//"2018052360246120",//获得秘钥，路径
+	                FileUtils.readFileToString(new File(env.getProperty("alipay.appPrivateKeyFile")), "UTF-8"),
 	                "json",
 	                "UTF-8",//获得公钥，的路径
-	                FileUtils.readFileToString(new File("D:/shiqinjin/alipay/alipay-public-key.txt"), "UTF-8"),
+	                FileUtils.readFileToString(new File(env.getProperty("alipay.alipayPublicKeyFile")), "UTF-8"),
 	                "RSA2"
 	                );
 	    }
