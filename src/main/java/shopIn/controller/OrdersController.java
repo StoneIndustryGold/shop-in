@@ -1,8 +1,7 @@
 package shopIn.controller;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -19,10 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alipay.api.AlipayApiException;
-import com.alipay.api.AlipayClient;
-import com.alipay.api.request.AlipayTradePagePayRequest;
-
-import shopIn.OrderState;
 import shopIn.controller.form.OrdersForm;
 import shopIn.pojo.Address;
 import shopIn.pojo.Cart;
@@ -78,7 +73,7 @@ public class OrdersController {//订单控制类
 			return "Orders-add";
 		}
 		System.out.println("了空间啊："+ordersForm.getAddressId());
-		Orders orders=ordersService.create(usersId,ordersForm.getAddressId());
+		ordersService.create(usersId,ordersForm.getAddressId());
 		
 		return "redirect:/uc/Orders/list";
 	}
@@ -112,7 +107,11 @@ public class OrdersController {//订单控制类
 	}
 	@RequestMapping(method = RequestMethod.GET, value = "/uc/orders/sync-pay-cb")
 	public String payok(@RequestParam("out_trade_no") String orderNumber,
+						@RequestParam Map<String, String> paramMap,
 						Model model) {
+		
+		System.out.println("验签"+paramMap);
+		ordersService.verifySignature(paramMap);
 		Integer orderId=Integer.valueOf(orderNumber.split("-")[0]);
 		model.addAttribute("orderId", orderId);
 		return "order-pay-ok";
