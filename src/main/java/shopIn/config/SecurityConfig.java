@@ -45,8 +45,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.rememberMe()
 			.tokenValiditySeconds(7 * 24 * 3600)
 			.key("test123456") // 避免开发中需要反复登录，上线时注释掉，默认为随机数
-			.userDetailsService(userDetailsService);
+			.userDetailsService(userDetailsService)
+		.and()//承上启下，还有的意思
+		
+		.csrf()//给这个路径开后门，要不然会被防攻击拦着进不去
+			.ignoringAntMatchers("/async-pay-cb");//这地址本在实现类里，调用了文档资源-在alipay。poroperties里
 	}
+	
 	@Bean// 维护Map<UserDetailsImpl, SessionIdSet>，可以从中获取当前有哪些登
 	public SessionRegistry sessionRegistry() {		
 		return new SessionRegistryImpl();

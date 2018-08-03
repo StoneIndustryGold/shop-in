@@ -5,7 +5,7 @@
   <mapper namespace="shopIn.mapper.OrdersMapper">
   
   	<insert id="create" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
-  		insert into Orders values (Orders_seq.nextval,#{userId},#{address.id},#{createtime},#{state}) 
+  		insert into Orders values (Orders_seq.nextval,#{userId},#{address.id},#{createtime},#{state},'') 
   	</insert>
   	<insert id="addItem"><!-- 添加到订单项的订单id和 商品id数量 -->
   		insert into OrdersItem (order_id,cellpone_id,ampout) values(#{ordersId},#{cellpones.id},#{ampout})
@@ -61,6 +61,9 @@
 			      inner join cellpones cs on  cs.id=om.cellpone_id
 			where o.user_id=#{usersId}  and o.id=#{id}
   	</select>
+  	<update id="setTotalAmount">
+  		update Orders set TOTAL_AMOUNT=#{totalAmountInFen}  where id=#{id}
+  	</update>
   </mapper>
   
   

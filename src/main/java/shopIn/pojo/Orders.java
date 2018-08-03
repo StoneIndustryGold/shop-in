@@ -12,6 +12,8 @@ public class Orders {//订单表
     private Address address;//对一的收货地址表
     private Date createtime;//订单形成的时间
     private OrderState state;//每局类型的状态
+    private Integer totalAmount;//用来放总金额的列
+    
     private List<OrdersItem> ordersitem;
     
 	public Integer getId() {
@@ -51,7 +53,14 @@ public class Orders {//订单表
 	public void setOrdersitem(List<OrdersItem> ordersitem) {
 		this.ordersitem = ordersitem;
 	}
-    public Integer totalCost() {//方法名
+	
+    public Integer getTotalAmount() {
+		return totalAmount;
+	}
+	public void setTotalAmount(Integer totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+	public Integer totalCost() {//方法名
     	Integer result = 0;//容器
         for (OrdersItem item : ordersitem) {//遍历订单项
             result += item.getCellpones().getPrice()*item.getAmpout();//得到订单项里的数据

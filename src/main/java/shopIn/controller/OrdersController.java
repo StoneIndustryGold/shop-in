@@ -112,8 +112,14 @@ public class OrdersController {//订单控制类
 		
 		System.out.println("验签"+paramMap);
 		ordersService.verifySignature(paramMap);//传往逻辑层进行判断
-		Integer orderId=Integer.valueOf(orderNumber.split("-")[0]);
+		Integer orderId=Integer.valueOf(orderNumber.split("-")[0]);//可以拿到id
 		model.addAttribute("orderId", orderId);
 		return "order-pay-ok";
+	}
+	@RequestMapping(method=RequestMethod.POST,value="/async-pay-cb")
+	@ResponseBody// 响应内容是text/plain
+	public String onPayResult(@RequestParam Map<String,String> paramMap) {
+		ordersService.handlePayResult(paramMap);
+		return "";
 	}
 }

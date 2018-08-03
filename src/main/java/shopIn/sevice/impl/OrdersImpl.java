@@ -45,7 +45,7 @@ public class OrdersImpl implements OrdersService {
 	private String alipayNotifyurl;
 	private String alipayPublickey;
 	private String alipaySignType;
-	
+	private String appId;
 	private ObjectMapper  objectMapper;
 	@Autowired
 	public OrdersImpl(OrdersMapper ordersMapper,
@@ -63,6 +63,7 @@ public class OrdersImpl implements OrdersService {
 				new File(env.getProperty("alipay.alipayPublicKeyFile")),
 				"UTF-8");//异常校验
 		this.alipaySignType=env.getProperty("alipay.signType");
+		this.appId=env.getProperty("alipay.appId");//初始发id
 	}
 
 
@@ -78,6 +79,7 @@ public class OrdersImpl implements OrdersService {
 		orders.setState(OrderState.Created);
 		
 		ordersMapper.create(orders);
+		
 		//创建订单项表
 		//订单项里有-- 用户的id和--商品的id--和数量
 		Cart cart=cartsService.fondOneByUserID(usersId);//通过用户id找到了商品项
@@ -115,7 +117,10 @@ public class OrdersImpl implements OrdersService {
 		if(orders.getState() !=OrderState.Created) {//盘对从数据库里查的值不等于枚举的值
 				throw new IllegalAccessError("只有Created状态的订单才能发起支付");
 		}
-		BigDecimal totalAmount=BigDecimal.valueOf(orders.totalCost()).divide(BigDecimal.valueOf(100));
+		
+		Integer totalAmountInFen=orders.totalCost();//为总金额，做了个容器totalAmountInFen
+		BigDecimal totalAmount=BigDecimal.valueOf(totalAmountInFen).divide(BigDecimal.valueOf(100));// 订单总金额（元）
+		
 		AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest(); // 即将发送给支付宝的请求（电脑
 		alipayRequest.setReturnUrl(alipayReturnUrl); // 浏览器端完成支付后跳转回商户的地
 		alipayRequest.setNotifyUrl(alipayNotifyurl);// 支付宝服务端确认支付成功后通知商户的地址（异步通知,需要上线才能做
@@ -132,7 +137,12 @@ public class OrdersImpl implements OrdersService {
 			String bizContentStr=objectMapper.writeValueAsString(bizContent);//objectMapper规定用他接收马皮对象
 			System.out.println("alipay.bizContentStr:"+bizContentStr);
 			alipayRequest.setBizContent(bizContentStr);//往这对象里添加数据这对象在上面alipayRequest
-			return alipayClient.pageExecute(alipayRequest).getBody();//返回给支付宝alipayClient
+			 
+			String rotm=alipayClient.pageExecute(alipayRequest).getBody();
+			System.out.println("往购物车里添加"+id+"总金额"+totalAmountInFen);
+			 ordersMapper.setTotalAmount(id,totalAmountInFen);//往购物车里添加总金额，通过当前id
+			 
+			 return rotm;//返回给支付宝rotm
 		} catch (Exception e) {//不管什么异常都抛掉
 			throw new RuntimeException(e);//这个异常解决了map对象的异常
 		}
@@ -163,5 +173,12 @@ public class OrdersImpl implements OrdersService {
 		
 		
 	
+	}
+
+
+	@Override
+	public void handlePayResult(Map<String, String> paramMap) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -19,4 +19,7 @@ public interface OrdersMapper {
 	
 	Orders findOne(@Param("id")int id,
 				   @Param("usersId") Integer usersId);
+
+	void setTotalAmount(@Param("id")Integer id, 
+						@Param("totalAmountInFen")Integer totalAmountInFen);
 }
