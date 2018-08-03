@@ -20,6 +20,7 @@ public interface OrdersService {
 		 * @throws AlipaySignatureException 若签名无效
 		 * 用到了面向对象的原理，ASE子类继承了父类方法，父类又继承了爷类方法
 		 */
-	void verifySignature(Map<String, String> paramMap) throws AlipaySignatureException;
+	void verifySignature(Map<String, String> paramMap) 
+			throws AlipaySignatureException;
 
 }

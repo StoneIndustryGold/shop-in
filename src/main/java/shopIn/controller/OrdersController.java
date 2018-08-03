@@ -107,11 +107,11 @@ public class OrdersController {//订单控制类
 	}
 	@RequestMapping(method = RequestMethod.GET, value = "/uc/orders/sync-pay-cb")
 	public String payok(@RequestParam("out_trade_no") String orderNumber,
-						@RequestParam Map<String, String> paramMap,
+						@RequestParam Map<String, String> paramMap,//拿到支付宝可以用类验签的数据
 						Model model) {
 		
 		System.out.println("验签"+paramMap);
-		ordersService.verifySignature(paramMap);
+		ordersService.verifySignature(paramMap);//传往逻辑层进行判断
 		Integer orderId=Integer.valueOf(orderNumber.split("-")[0]);
 		model.addAttribute("orderId", orderId);
 		return "order-pay-ok";
