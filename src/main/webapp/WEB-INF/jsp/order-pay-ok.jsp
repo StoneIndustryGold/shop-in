@@ -9,6 +9,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />   
 <t:layout title="">
 	<jsp:body>
-		<div>订单支付完成，前往<a href="${contextPath}/uc/orders/${orderId}">订单详情页</a></div>
+	${orderId}
+		<div>订单支付完成，前往<a href="${contextPath}/uc/Orders/details/${orderId}">订单详情页</a></div>
 	</jsp:body>
 </t:layout>

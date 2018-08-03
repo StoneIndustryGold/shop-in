@@ -28,6 +28,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration//����������
 @ComponentScan(basePackages="shopIn")//ɨ�趥���
@@ -87,5 +88,10 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	                FileUtils.readFileToString(new File(env.getProperty("alipay.alipayPublicKeyFile")), "UTF-8"),
 	                "RSA2"
 	                );
+	    }
+	    
+	    @Bean
+	    public ObjectMapper objectMapper() {
+	        return new ObjectMapper();
 	    }
 }
