@@ -47,6 +47,7 @@ public class OrdersImpl implements OrdersService {
 	private String alipaySignType;
 	private String appId;
 	private ObjectMapper  objectMapper;
+	
 	@Autowired
 	public OrdersImpl(OrdersMapper ordersMapper,
 					AlipayClient alipayClient, 
@@ -169,16 +170,38 @@ public class OrdersImpl implements OrdersService {
 				}				
 			}catch (AlipayApiException e) {
 				throw new AlipaySignatureException(e);
-			}
-		
-		
-	
+			}	
 	}
 
 
 	@Override
 	public void handlePayResult(Map<String, String> paramMap) {
-		// TODO Auto-generated method stub
+		//验签
+		//verifySignature(paramMap);
+		// 获取必要的请求参数
+		String orderNumber=paramMap.get("out_trade_no");//out_trade_no: 81-1533173244190值
+		Integer orderId=Integer.valueOf(orderNumber.split("-")[0]);//拿到除去减号的第零个下标的值--81
+		Integer totalAmount = new BigDecimal(paramMap.get("total_amount")).multiply(BigDecimal.valueOf(100)).intValue();
+		System.out.println(orderId);
+		String appId=paramMap.get("app_id");//app_id: 2018052360246120  --商户id
+		String tradeStatus=paramMap.get("trade_status");//支付宝传来的状态
 		
+		Orders	orders=ordersMapper.findOneToPay(orderId);//得到的值是148数据库里没有这个值id
+		if(orders.getState()!=OrderState.Created) {
+			throw new AlipayResultException("订单状态非Created");
+		}	
+		if(!orders.getTotalAmount().equals(totalAmount)) {
+			throw new AlipayResultException("订单总金额不一致");
+		}
+		if(!appId.equals(this.appId)) {
+			
+			throw new AlipayResultException("appId不一致");
+		}
+		System.out.println("234");
+		if("TRADE_SUCCESS".equals(tradeStatus) || "TRADE_FINISHED".equals(tradeStatus) ) {
+			System.out.println("123");
+			//设置订单状态唯一支付
+			ordersMapper.setStateToPaid(orderId);
+		}
 	}
 }

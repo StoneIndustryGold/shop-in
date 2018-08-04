@@ -22,4 +22,8 @@ public interface OrdersMapper {
 
 	void setTotalAmount(@Param("id")Integer id, 
 						@Param("totalAmountInFen")Integer totalAmountInFen);
+
+	Orders findOneToPay(Integer orderId);
+
+	void setStateToPaid(Integer orderId);
 }

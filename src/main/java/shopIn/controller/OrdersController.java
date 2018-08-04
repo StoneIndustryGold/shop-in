@@ -97,6 +97,7 @@ public class OrdersController {//订单控制类
 		model.addAttribute("orders", orders);		
 		return "Orders-details";
 	}
+	//在线支付
 	@RequestMapping(method=RequestMethod.POST,value="/uc/Orders/{id}/pay",
 					produces="text/html;charset=UTF-8")// 非常重要，支付宝api响应是html片段（不含编码），必须显式
 	@ResponseBody
@@ -105,6 +106,7 @@ public class OrdersController {//订单控制类
 		
 		return ordersService.payForm(usersId,id);
 	}
+	//在线支付同步
 	@RequestMapping(method = RequestMethod.GET, value = "/uc/orders/sync-pay-cb")
 	public String payok(@RequestParam("out_trade_no") String orderNumber,
 						@RequestParam Map<String, String> paramMap,//拿到支付宝可以用类验签的数据
@@ -113,13 +115,16 @@ public class OrdersController {//订单控制类
 		System.out.println("验签"+paramMap);
 		ordersService.verifySignature(paramMap);//传往逻辑层进行判断
 		Integer orderId=Integer.valueOf(orderNumber.split("-")[0]);//可以拿到id
+		System.out.println("检验#"+orderId);
 		model.addAttribute("orderId", orderId);
 		return "order-pay-ok";
 	}
-	@RequestMapping(method=RequestMethod.POST,value="/async-pay-cb")
+	//在线支付异步
+	@RequestMapping(method=RequestMethod.POST,value="/async-pay-cb",produces="text/html;charset=UTF-8")//异步提交才跳往这里
 	@ResponseBody// 响应内容是text/plain
-	public String onPayResult(@RequestParam Map<String,String> paramMap) {
+	public String onPayResult(@RequestParam Map<String,String> paramMap) {//接受支付宝的里的值
 		ordersService.handlePayResult(paramMap);
+		System.out.println("有个傻逼发来一个请求");
 		return "";
 	}
 }

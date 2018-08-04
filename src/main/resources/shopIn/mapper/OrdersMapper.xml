@@ -21,7 +21,7 @@
 		      inner join Address a on a.user_id=u.id
 		      inner join OrdersItem om on om.order_id=o.id     
 		      inner join cellpones cs on  cs.id=om.cellpone_id
-		where o.user_id=#{usersId}
+		where o.user_id=#{usersId} order by o.id
  
   	</select>
   	<resultMap type="Orders" id="ordersFindALl">
@@ -63,6 +63,13 @@
   	</select>
   	<update id="setTotalAmount">
   		update Orders set TOTAL_AMOUNT=#{totalAmountInFen}  where id=#{id}
+  	</update>
+  	<select id="findOneToPay" resultType="Orders">
+  		select id,"state",total_amount from orders where id=#{orderId}
+  	</select>
+  	<update id="setStateToPaid">
+  			<!-- 把状态改为已支付 -->
+  			update Orders set "state"='Paid' where id=#{id}
   	</update>
   </mapper>
   

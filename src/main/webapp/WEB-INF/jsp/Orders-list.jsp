@@ -18,7 +18,7 @@
 	
 		3显示收货地址， 更改地址链接 重定向到订单详情页<br>
 		<table>
-		<tr><th>商品</th><th>单价</th><th>数量</th></tr>
+		<tr><th>ID</th><th>商品</th><th>单价</th><th>数量</th></tr>
 			<c:forEach items="${orders}" var="order">
 		订单创建时间：<fmt:formatDate value="${order.createtime }" pattern="yyyy-MM-dd HH:mm:ss"/><br>
 					得到状态：${order.state}<br>
@@ -27,6 +27,7 @@
 					${item.ampout}
 				id#	${order.id}
 			<tr>
+			<td>${order.id }</td>
 				<td><a href="${contextPath }/uc/Orders/details/${order.id}">
 				${item.cellpones.brand}</a></td>
 			
