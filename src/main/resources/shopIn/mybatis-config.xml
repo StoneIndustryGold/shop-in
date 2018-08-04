@@ -5,10 +5,10 @@
 
   <configuration>
 	    <settings>
-		    <!-- 如：列名CPU_BRAND和属性名cpuBrand兼容了 -->
+		    <!-- 如：数据库列名CPU_BRAND和pojo属性名cpuBrand兼容了 -->
 		    <setting name="mapUnderscoreToCamelCase" value="true" />
 	  	</settings>
- 		<typeAliases>
+ 		<typeAliases><!--数据库列名，可以对应pojo属性名 -->
  			<package name="shopIn.pojo"/>
  		</typeAliases>
   </configuration>
