@@ -66,5 +66,5 @@
 		</div>
 	</form:form>
 	</jsp:body>	
-<br><br><br><br><br><br><br><br><br>
+
 </t:layout>
