@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import shopIn.controller.business.IpBaseServiceController;
 import shopIn.pojo.Address;
 import shopIn.sevice.AddressService;
 
 @Controller
-public class AddressController {
+public class AddressController extends IpBaseServiceController{
 	private AddressService addressService;
 	
 	

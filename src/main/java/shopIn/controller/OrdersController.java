@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alipay.api.AlipayApiException;
+
+import shopIn.controller.business.IpBaseServiceController;
 import shopIn.controller.form.OrdersForm;
 import shopIn.pojo.Address;
 import shopIn.pojo.Cart;
@@ -27,7 +29,7 @@ import shopIn.sevice.CartsService;
 import shopIn.sevice.OrdersService;
 
 @Controller
-public class OrdersController {//订单控制类
+public class OrdersController extends IpBaseServiceController{//订单控制类
 	private CartsService cartsService;//购物车接口
 	private AddressService addressService;//地址接口
 	private OrdersService ordersService;//依赖订单接口

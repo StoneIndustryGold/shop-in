@@ -32,7 +32,8 @@
       	    年龄：<sec:authentication property="principal.users.age_id" /><br><!-- 设置别名方便取值 -->
 	       登錄時間：<sec:authentication property="principal.users.lastLoginTime" var="lastLoginTime"/>
 	       <fmt:formatDate value="${lastLoginTime }"
-				      pattern="yyyy-MM-dd HH:mm:ss"/> <br>    	    
+				      pattern="yyyy-MM-dd HH:mm:ss"/> <br>
+	        当前地址：【${userProvince}】<br>  <!-- 得到省份地址 -->	    
       	    <sec:authentication property="principal.users.images" var="UsersImage" />
       	   														<!-- 取得图片名字 -->
       			<img  src="${contextPath }/assets/images/cellpone/${UsersImage}"

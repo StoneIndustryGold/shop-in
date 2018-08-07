@@ -4,14 +4,9 @@
     <c:set var="contextPath" value="${pageContext.request.contextPath}" />
     <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
      <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	详情页面<br>
+     <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<t:layout title="订单详情页面">
+	
 				订单状态：${orders.stateText() }<br>
 				${orders.createtime }<br>
 	<table>
@@ -31,5 +26,4 @@
 			<button type="submit">支付宝付款</button>
 		</form>
 	</div>
-</body>
-</html>
+</t:layout>

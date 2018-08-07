@@ -2,22 +2,23 @@ package shopIn.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import shopIn.controller.business.IpBaseServiceController;
 import shopIn.pojo.Cart;
 import shopIn.pojo.Item.CartItem;
 import shopIn.sevice.CartsService;
 
 @Controller
-public class CartsContlloer {
+public class CartsContlloer extends IpBaseServiceController{
 	private CartsService cartsService;
 	
 	@Autowired

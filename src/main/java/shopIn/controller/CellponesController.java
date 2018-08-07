@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import shopIn.controller.business.IpBaseServiceController;
 import shopIn.pojo.Cellpones;
 import shopIn.sevice.CellponesService;
 @Controller
-public class CellponesController {
+public class CellponesController extends IpBaseServiceController{
 	private CellponesService cellponesService;
 	
 	

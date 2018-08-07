@@ -3,13 +3,8 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+     <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<t:layout title="订单详情页面">
 		订单集合页<br>
 		首先大得到当前用户，
 		1 显示订单创建时间<br>
@@ -39,5 +34,4 @@
 				
 			</c:forEach>
 		</table>
-</body>
-</html>
+</t:layout>
