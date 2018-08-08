@@ -204,4 +204,11 @@ public class OrdersImpl implements OrdersService {
 			ordersMapper.setStateToPaid(orderId);
 		}
 	}
+
+
+	@Override
+	public void deleteOrders(Integer id) {
+		ordersMapper.deleteOrders(id);
+		
+	}
 }

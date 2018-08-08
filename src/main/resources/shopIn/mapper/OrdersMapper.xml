@@ -71,6 +71,9 @@
   			<!-- 把状态改为已支付 -->
   			update Orders set "state"='Paid' where id=#{id}
   	</update>
+  	<delete id="deleteOrders">
+  		delete from Orders where id=#{id}--取消订单
+  	</delete>
   </mapper>
   
   

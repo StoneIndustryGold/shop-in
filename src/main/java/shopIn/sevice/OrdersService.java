@@ -25,4 +25,6 @@ public interface OrdersService {
 
 	void handlePayResult(Map<String, String> paramMap);
 
+	void deleteOrders(Integer id);//删除方法
+
 }

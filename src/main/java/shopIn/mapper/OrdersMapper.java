@@ -26,4 +26,6 @@ public interface OrdersMapper {
 	Orders findOneToPay(Integer orderId);
 
 	void setStateToPaid(Integer orderId);
+	
+	void deleteOrders(Integer id);//删除方法
 }

@@ -114,12 +114,13 @@ create table carts(
  
   
  create table OrdersItem(--订单项
-        user_id integer not null,--外键用户
+        order_id integer not null,--外键订单
         cellpone_id  integer not null,--外键手机商品id
-        ampout integer ,
-        constraint OrdersItem_FK_user_id_users foreign key(user_id) references users(id),
+        ampout integer,--数量
+        constraint OrdersItem_FK_order_id_Orders foreign key(order_id)
+        references Orders(id) on delete cascade,--当主键删除是同时删除外键
         constraint OrdersItem_FK_c_id_cs foreign key (cellpone_id) references cellpones(id),
-        constraint OrdersItem_PK primary key  (user_id,cellpone_id)      
+        constraint OrdersItem_PK primary key (order_id,cellpone_id) 
  )
  
  

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alipay.api.AlipayApiException;
+import com.fasterxml.jackson.databind.util.RawValue;
 
 import shopIn.controller.business.BaseServiceController;
 import shopIn.controller.form.OrdersForm;
@@ -127,6 +128,13 @@ public class OrdersController extends BaseServiceController{//订单控制类
 	public String onPayResult(@RequestParam Map<String,String> paramMap) {//接受支付宝的里的值
 		ordersService.handlePayResult(paramMap);
 		System.out.println("有个傻逼发来一个请求");
-		return "";
+		return "redirect:/uc/Orders/list";
+	}
+	//取消订单
+	@RequestMapping(method=RequestMethod.POST,value="/uc/Orders/delete/{id}")
+	public String deleteOrders(@PathVariable Integer id) {
+		
+		ordersService.deleteOrders(id);
+		return "redirect:/uc/Orders/list";
 	}
 }
