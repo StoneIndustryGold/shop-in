@@ -28,7 +28,9 @@ public abstract class BaseServiceController {
 		String ip=requst.getRemoteAddr();//获得请求ip地址
 		String province=ipServiice.ipToProvince(ip);
 		logger.debug("ip定位"+province);
-//		String province=(String) session.getAttribute("userProvince");//接收userProvince地址
+//String province=null;
+// synchronized (session) { // 防止多线程并发访问时不必要的多次进入if,线程出入可
+//		 province=(String) session.getAttribute("userProvince");//接收userProvince地址
 //
 //		if(province==null) {//判断取来的值等于空时
 //			province=ipServiice.ipToProvince(ip);//就去查找ip
