@@ -2,23 +2,27 @@ package shopIn.controller;
 
 import java.util.List;
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import shopIn.controller.business.IpBaseServiceController;
+import shopIn.controller.business.BaseServiceController;
 import shopIn.pojo.Cart;
 import shopIn.pojo.Item.CartItem;
 import shopIn.sevice.CartsService;
 
 @Controller
-public class CartsContlloer extends IpBaseServiceController{
+@Transactional
+public class CartsContlloer extends BaseServiceController{
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private CartsService cartsService;
 	
 	@Autowired
@@ -32,13 +36,16 @@ public class CartsContlloer extends IpBaseServiceController{
 					  @AuthenticationPrincipal(expression = "users.id") Integer usersId ) {
 		 // 注意：SecurityConfig中配置的/uc/**需要登录保证了到达此控制器方法时，必定有用户已登录，这样才能顺利		
 		System.out.println("--当前用户："+usersId+"商品："+cellponesId);
+		
 		cartsService.addToCart(usersId,cellponesId,1);
+		
 		return "redirect:/";
 	}
 	@RequestMapping(method=RequestMethod.POST,value="/uc/carts/upteda")
 	public String upteda(@RequestParam Integer cellponesId,
 			@AuthenticationPrincipal(expression = "users.id") Integer usersId ) {
 			System.out.println("取消:"+cellponesId);
+			logger.debug("--当前用户2："+usersId+"商品2"+cellponesId);
 			cartsService.uptedaCarts(usersId,cellponesId);//当前用户点击取消订单时执行这方法。
 		return "redirect:/uc/carts/details";
 	}

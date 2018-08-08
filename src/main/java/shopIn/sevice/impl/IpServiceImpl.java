@@ -33,7 +33,7 @@ public class IpServiceImpl implements IpService {
 				"https://restapi.amap.com/v3/ip?key={key}&ip{ip}", 
 				JsonNode.class,// 将响应转换成json树模型
 				params);
-		System.out.println("调用高德地址："+json.at("/info"));
+		System.out.println("调用高德地址："+json.at("/info")+json.at("/province"));
 		return json.at("/province").asText();//json树根，/下的文件
 	}
 
