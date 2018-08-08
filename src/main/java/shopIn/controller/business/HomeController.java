@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import shopIn.pojo.Cellpones;
 import shopIn.sevice.CellponesService;
 @Controller
-public class HomeController {
+public class HomeController extends BaseServiceController{
 		
 	private CellponesService cellponesService;
 	
