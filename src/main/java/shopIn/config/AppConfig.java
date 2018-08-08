@@ -3,12 +3,16 @@ package shopIn.config;
 import java.io.File;
 import java.io.IOException;
 
+import javax.cache.CacheManager;
+import javax.cache.Caching;
+import javax.cache.spi.CachingProvider;
 import javax.sql.DataSource;
 
 import org.apache.commons.io.FileUtils;
-import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.jcache.JCacheCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -37,6 +41,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @MapperScan("shopIn.mapper")
 @PropertySource({"classpath:jdbc.properties","classpath:alipay.properties"})
 @EnableTransactionManagement // ����spring����֧��
+@EnableCaching//开启缓存支持
 public class AppConfig extends WebMvcConfigurerAdapter{
 	@Override//重写    
 	//重写 configigureVieweRsolvers方法
@@ -99,5 +104,19 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	    public RestTemplate restTemplate() {
 	    	
 	    	return new RestTemplate();
+	    }
+	    @Bean
+	    public JCacheCacheManager cacheManager() throws Exception {
+	        return new JCacheCacheManager(jCacheManager());
+	    }
+
+	    @Bean
+	    public CacheManager jCacheManager() throws Exception {
+	        CachingProvider cachingProvider = Caching.getCachingProvider();
+	        CacheManager manager = cachingProvider.getCacheManager( 
+	            getClass().getResource("/ehcache.xml").toURI(), // ehcache配置文件
+	            getClass().getClassLoader()
+	            ); 
+	        return manager;
 	    }
 }

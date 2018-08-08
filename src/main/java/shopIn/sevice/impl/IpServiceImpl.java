@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.hibernate.validator.internal.util.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,7 +23,7 @@ public class IpServiceImpl implements IpService {
 		this.restTemplate = restTemplate;
 	}
 
-
+	@Cacheable(cacheNames = "ip-to-province", sync = true) 
 	@Override
 	public String ipToProvince(String ip) {
 		

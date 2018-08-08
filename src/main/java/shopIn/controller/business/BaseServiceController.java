@@ -26,13 +26,14 @@ public abstract class BaseServiceController {
 									) {
 		logger.debug("准备数据");
 		String ip=requst.getRemoteAddr();//获得请求ip地址
-		String province=(String) session.getAttribute("userProvince");//接收userProvince地址
-
+		String province=ipServiice.ipToProvince(ip);
 		logger.debug("ip定位"+province);
-		if(province==null) {//判断取来的值等于空时
-			province=ipServiice.ipToProvince(ip);//就去查找ip
-			session.setAttribute("userProvince", province);//查到的数据存往会话中
-		}
+//		String province=(String) session.getAttribute("userProvince");//接收userProvince地址
+//
+//		if(province==null) {//判断取来的值等于空时
+//			province=ipServiice.ipToProvince(ip);//就去查找ip
+//			session.setAttribute("userProvince", province);//查到的数据存往会话中
+//		}
 		model.addAttribute("userProvince", province);
 	}
 }

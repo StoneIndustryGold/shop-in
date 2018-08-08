@@ -12,6 +12,11 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+      		<groupId>org.springframework</groupId>
+      		<artifactId>spring-context-support</artifactId>
+      		<version>4.3.18.RELEASE</version>
+    	</dependency>  
 		<dependency><!-- java、spring开源web 。mvc -->
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -152,6 +157,19 @@
 	      <groupId>ch.qos.logback</groupId>
 	      <artifactId>logback-classic</artifactId>
 	      <version>1.2.3</version>
-	    </dependency>   
+	    </dependency> 
+	    <!-- 缓存 -->
+	    <dependency>
+	      <groupId>org.ehcache</groupId>
+	      <artifactId>ehcache</artifactId>
+	      <version>3.5.2</version>
+	    </dependency>
+	    <!-- JSR-107 -->
+	    <dependency>
+	      <groupId>javax.cache</groupId>
+	      <artifactId>cache-api</artifactId>
+	      <version>1.1.0</version>
+	    </dependency>	    
+	      
   	</dependencies>
 </project>
