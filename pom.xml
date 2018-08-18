@@ -22,7 +22,11 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>4.3.18.RELEASE</version>
 		</dependency>
-
+		<dependency><!--开启freemarker表单的支持  -->
+	      <groupId>org.freemarker</groupId>
+	      <artifactId>freemarker</artifactId>
+	      <version>2.3.28</version>
+    	</dependency> 
 		<dependency><!-- 登陆拦截器 -->
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
